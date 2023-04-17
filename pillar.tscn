@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://3o8km61mbd66"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_sgl0f"]
+size = Vector3(1, 1, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n1wki"]
+albedo_color = Color(1, 1, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_75pjr"]
+albedo_color = Color(1, 0, 0.0705882, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ml1ju"]
+albedo_color = Color(0.0196078, 0, 1, 1)
+
+[node name="Pillar" type="Node3D"]
+
+[node name="MeshInstance3DY" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("PrismMesh_sgl0f")
+surface_material_override/0 = SubResource("StandardMaterial3D_n1wki")
+
+[node name="MeshInstance3DX" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("PrismMesh_sgl0f")
+surface_material_override/0 = SubResource("StandardMaterial3D_75pjr")
+
+[node name="MeshInstance3DZ" type="MeshInstance3D" parent="."]
+mesh = SubResource("PrismMesh_sgl0f")
+surface_material_override/0 = SubResource("StandardMaterial3D_ml1ju")
