@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dd8cvsijhpm5n"]
+
+[ext_resource type="Script" path="res://ship.gd" id="1_18bpn"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_m6y3n"]
+top_radius = 8.0
+bottom_radius = 10.0
+height = 40.0
+
+[node name="Ship" type="Node3D"]
+script = ExtResource("1_18bpn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CylinderMesh_m6y3n")

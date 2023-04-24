@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://mufxrmqvsj0o"]
+[gd_scene load_steps=8 format=3 uid="uid://mufxrmqvsj0o"]
 
 [ext_resource type="PackedScene" uid="uid://d3mw85y3sbgrt" path="res://vehicle.tscn" id="1_a5bqa"]
 [ext_resource type="Texture2D" uid="uid://dcci1dwegwpld" path="res://milkyway_2020_4k.jpg" id="1_b7gdk"]
 [ext_resource type="PackedScene" uid="uid://3o8km61mbd66" path="res://pillar.tscn" id="2_3vxuu"]
+[ext_resource type="PackedScene" uid="uid://dd8cvsijhpm5n" path="res://ship.tscn" id="4_vr5mi"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_c3qym"]
 panorama = ExtResource("1_b7gdk")
@@ -22,27 +23,30 @@ ambient_light_color = Color(0.847059, 0.619608, 0.807843, 1)
 environment = SubResource("Environment_s4uou")
 
 [node name="Vehicle" parent="." instance=ExtResource("1_a5bqa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 102.758)
 
 [node name="Pillar" parent="." instance=ExtResource("2_3vxuu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, -32, -32)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, -128, -128)
 
 [node name="Pillar2" parent="." instance=ExtResource("2_3vxuu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, -32, -32)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, -128, -128)
 
 [node name="Pillar3" parent="." instance=ExtResource("2_3vxuu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, -32, 32)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, -128, 128)
 
 [node name="Pillar4" parent="." instance=ExtResource("2_3vxuu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, -32, 32)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, -128, 128)
 
 [node name="Pillar5" parent="." instance=ExtResource("2_3vxuu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 32, -32)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 128, -128)
 
 [node name="Pillar6" parent="." instance=ExtResource("2_3vxuu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 32, -32)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 128, -128)
 
 [node name="Pillar7" parent="." instance=ExtResource("2_3vxuu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 32, 32)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 128, 128)
 
 [node name="Pillar8" parent="." instance=ExtResource("2_3vxuu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 32, 32)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 128, 128)
+
+[node name="Ship" parent="." instance=ExtResource("4_vr5mi")]

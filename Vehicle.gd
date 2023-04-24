@@ -12,7 +12,7 @@ const rotationDampCoef:float = 0.2
 
 func _integrate_forces(_state):
 	var controls:Controls = controlsCapture._capture()
-	print_info(controls)
+#	print_info(controls)
 	
 	#	translate
 	if controls.stopTranslation:
