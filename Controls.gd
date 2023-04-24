@@ -14,6 +14,7 @@ var rotation:= Vector3.ZERO
 var stopTranslation:= false
 var stopRotation:= false
 
+var grab:=false
 #var boost:= false
 #var fire:= false
 
@@ -40,9 +41,9 @@ func _capture()->Controls:
 			rotation.y += int(Input.is_action_pressed("yaw")) - int(Input.is_action_pressed("a_yaw"))
 	
 	
+	grab = Input.is_action_just_pressed("grab")
 #	fire = (Input.is_action_pressed("fire") || forceFireOn) && (Settings.menuOpen == false)
-	
-#	print("class_name Controls:",self)
+
 	return self
 
 

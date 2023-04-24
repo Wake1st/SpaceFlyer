@@ -22,7 +22,7 @@ func _ready():
 		)
 		
 		items[i].apply_impulse(
-			global_position.normalized() * randf_range(20,200)
+			global_position.normalized() * randf_range(2,5)
 		)
 		items[i].apply_torque(
 			Vector3(
