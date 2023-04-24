@@ -11,4 +11,5 @@ height = 40.0
 script = ExtResource("1_18bpn")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("CylinderMesh_m6y3n")

@@ -23,7 +23,7 @@ ambient_light_color = Color(0.847059, 0.619608, 0.807843, 1)
 environment = SubResource("Environment_s4uou")
 
 [node name="Vehicle" parent="." instance=ExtResource("1_a5bqa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 102.758)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 97.5072)
 
 [node name="Pillar" parent="." instance=ExtResource("2_3vxuu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, -128, -128)

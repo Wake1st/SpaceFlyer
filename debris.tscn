@@ -6,6 +6,8 @@
 
 [node name="debris" type="RigidBody3D"]
 gravity_scale = 0.0
+linear_damp_mode = 1
+angular_damp_mode = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_wcvg6")
