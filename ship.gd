@@ -1,7 +1,7 @@
 extends Node3D
 
 
-@export var itemCount:float = 10.0
+@export var itemCount:float = 1.0
 
 var items:Array[RigidBody3D] = []
 var firstPass:bool = true
@@ -22,7 +22,7 @@ func _ready():
 		)
 		
 		items[i].apply_impulse(
-			global_position.normalized() * randf_range(2,5)
+			global_position.normalized() * randf_range(1,2)
 		)
 		items[i].apply_torque(
 			Vector3(

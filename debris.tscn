@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bj1vt1e1nt6of"]
+[gd_scene load_steps=4 format=3 uid="uid://bj1vt1e1nt6of"]
+
+[ext_resource type="Script" path="res://debris.gd" id="1_7bqes"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wcvg6"]
 
@@ -10,11 +12,12 @@ collision_mask = 2
 gravity_scale = 0.0
 linear_damp_mode = 1
 angular_damp_mode = 1
+script = ExtResource("1_7bqes")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_wcvg6")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="Mesh" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_xk2p0")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
