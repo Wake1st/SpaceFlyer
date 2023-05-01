@@ -15,8 +15,7 @@ var stopTranslation:= false
 var stopRotation:= false
 
 var grab:=false
-#var boost:= false
-#var fire:= false
+var action:=false
 
 
 func _capture()->Controls:
@@ -40,9 +39,8 @@ func _capture()->Controls:
 			rotation.z += int(Input.is_action_pressed("roll")) - int(Input.is_action_pressed("a-roll"))
 			rotation.y += int(Input.is_action_pressed("yaw")) - int(Input.is_action_pressed("a_yaw"))
 	
-	
 	grab = Input.is_action_just_pressed("grab")
-#	fire = (Input.is_action_pressed("fire") || forceFireOn) && (Settings.menuOpen == false)
+	action = Input.is_action_just_pressed("action")
 
 	return self
 

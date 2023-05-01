@@ -10,9 +10,13 @@ var warpReady:bool = false
 
 
 func _on_collection_area_body_entered(body):
-	body.queue_free()
-	
-	collectedCount += 1
-	if (collectedCount >= requiredCount):
-		warpReady = true
-		emit_signal("win_game")
+	if body.name == "Vehicle":
+		print("vehicle entered")
+		body.move(%VehiclePort.transform)
+	else:
+		body.queue_free()
+		
+		collectedCount += 1
+		if (collectedCount >= requiredCount):
+			warpReady = true
+			emit_signal("win_game")
