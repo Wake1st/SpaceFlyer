@@ -13,6 +13,10 @@ var grabbableBody:RigidBody3D = null
 var grabbable:MeshInstance3D = null
 var grabbing:bool = false
 
+var dockable:bool = false
+var docked:bool = false
+@export var dock:Transform3D
+
 var deb
 
 func _ready():
@@ -22,33 +26,12 @@ func _ready():
 func _integrate_forces(_state):
 	var controls:Controls = controlsCapture._capture()
 	
-	motion(controls)
-	
-	if controls.grab:
-		if grabbing:
-			grabbable.queue_free()
-			grabbable = null
-			grabbing = false
-			
-			var debris = deb.instantiate()
-			get_parent().add_child(debris)
-			var grabOrigin = global_transform.basis * $GrabArea/GrabCollider.transform.origin
-			debris.transform.origin = global_position + grabOrigin
-			var len = $GrabArea/GrabCollider.transform.origin.length()
-			var tangential_velocity = angular_velocity.cross(
-				global_transform.basis * Vector3.FORWARD * len
-			)
-			debris.linear_velocity = linear_velocity + tangential_velocity
-		else:
-			if grabbableBody:
-				grabbing = true
-				grabbable = grabbableBody.get_child(1)
-				
-				if (grabbable.get_parent()):
-					grabbable.get_parent().remove_child(grabbable)
-				$GrabArea/GrabCollider.add_child(grabbable)
-				
-				grabbableBody.queue_free()
+	if docked:
+		print(docked, controls.action)
+		docked = not controls.action
+	else:
+		motion(controls)
+		grab(controls)
 
 
 func motion(controls:Controls):
@@ -75,7 +58,43 @@ func motion(controls:Controls):
 		apply_torque(global_transform.basis * controls.rotation * rotationSpeed)
 
 
+func move(destination:Transform3D):
+	linear_velocity = Vector3.ZERO
+	angular_velocity = Vector3.ZERO
+	transform = destination
+	docked = true
+
+
+func grab(controls:Controls):
+	if controls.grab:
+		if grabbing:
+			grabbable.queue_free()
+			grabbable = null
+			grabbing = false
+			
+			var debris = deb.instantiate()
+			get_parent().add_child(debris)
+			var grabOrigin = global_transform.basis * $GrabArea/GrabCollider.transform.origin
+			debris.transform.origin = global_position + grabOrigin
+			var armLength = $GrabArea/GrabCollider.transform.origin.length()
+			var tangential_velocity = angular_velocity.cross(
+				global_transform.basis * Vector3.FORWARD * armLength
+			)
+			debris.linear_velocity = linear_velocity + tangential_velocity
+		else:
+			if grabbableBody:
+				grabbing = true
+				grabbable = grabbableBody.get_child(1)
+				
+				if (grabbable.get_parent()):
+					grabbable.get_parent().remove_child(grabbable)
+				$GrabArea/GrabCollider.add_child(grabbable)
+				
+				grabbableBody.queue_free()
+
+
 func _on_area_3d_body_entered(body):
+	print(body.name)
 	if grabbable == null:
 		grabbableBody = body
 

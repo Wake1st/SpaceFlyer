@@ -19,7 +19,8 @@ func _physics_process(_delta):
 	if (Input.is_action_just_pressed("reset_level")):
 		SetupLevel()
 	
-	StartLevel()
+	if firstPass:	
+		StartLevel()
 
 
 func SetupLevel():
@@ -43,16 +44,15 @@ func SetupLevel():
 
 
 func StartLevel():
-	if firstPass:
-		firstPass = false
-		for i in items.size():
-			items[i].apply_impulse(
-				items[i].transform.origin.normalized() * randf_range(4,10)
+	firstPass = false
+	for i in items.size():
+		items[i].apply_impulse(
+			items[i].transform.origin.normalized() * randf_range(4,10)
+		)
+		items[i].apply_torque(
+			Vector3(
+				randf_range(-40,40),
+				randf_range(-40,40),
+				randf_range(-40,40)
 			)
-			items[i].apply_torque(
-				Vector3(
-					randf_range(-40,40),
-					randf_range(-40,40),
-					randf_range(-40,40)
-				)
-			)
+		)
