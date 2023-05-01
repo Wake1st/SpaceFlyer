@@ -6,6 +6,9 @@ extends Node3D
 var items:Array[RigidBody3D] = []
 var firstPass:bool = true
 
+var requiredCount = 1
+var collectedCount = 0
+
 func _ready():
 	var deb = preload("res://debris.tscn")
 	
@@ -20,17 +23,6 @@ func _ready():
 			(i % 3) - 1,
 			((i+1) % 3) - 1,
 		)
-		
-		items[i].apply_impulse(
-			global_position.normalized() * randf_range(1,2)
-		)
-		items[i].apply_torque(
-			Vector3(
-				randf_range(-90,90),
-				randf_range(-90,90),
-				randf_range(-90,90)
-			)
-		)
 
 
 func _physics_process(_delta):
@@ -38,7 +30,7 @@ func _physics_process(_delta):
 		firstPass = false
 		for i in items.size():
 			items[i].apply_impulse(
-				items[i].transform.origin.normalized() * randf_range(4,40)
+				items[i].transform.origin.normalized() * randf_range(4,10)
 			)
 			items[i].apply_torque(
 				Vector3(
@@ -47,3 +39,11 @@ func _physics_process(_delta):
 					randf_range(-40,40)
 				)
 			)
+
+
+func _on_collection_area_body_entered(body):
+	body.queue_free()
+	
+	collectedCount += 1
+	if (collectedCount >= requiredCount):
+		print("all parts gathered")
