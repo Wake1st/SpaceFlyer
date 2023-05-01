@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://mufxrmqvsj0o"]
+[gd_scene load_steps=10 format=3 uid="uid://mufxrmqvsj0o"]
 
 [ext_resource type="PackedScene" uid="uid://d3mw85y3sbgrt" path="res://vehicle.tscn" id="1_a5bqa"]
 [ext_resource type="Texture2D" uid="uid://dcci1dwegwpld" path="res://milkyway_2020_4k.jpg" id="1_b7gdk"]
 [ext_resource type="PackedScene" uid="uid://3o8km61mbd66" path="res://pillar.tscn" id="2_3vxuu"]
 [ext_resource type="PackedScene" uid="uid://dd8cvsijhpm5n" path="res://ship.tscn" id="4_vr5mi"]
+[ext_resource type="Script" path="res://LevelManager.gd" id="5_2gvga"]
+[ext_resource type="PackedScene" uid="uid://cjgse5edkxr78" path="res://debris_spawner.tscn" id="6_48pw5"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_c3qym"]
 panorama = ExtResource("1_b7gdk")
@@ -50,3 +52,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 128, 128)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 128, 128)
 
 [node name="Ship" parent="." instance=ExtResource("4_vr5mi")]
+
+[node name="DebrisSpawner" parent="." instance=ExtResource("6_48pw5")]
+
+[node name="LevelManager" type="Node" parent="." node_paths=PackedStringArray("ship")]
+script = ExtResource("5_2gvga")
+ship = NodePath("../Ship")
+
+[connection signal="win_game" from="Ship" to="LevelManager" method="_on_ship_win_game"]

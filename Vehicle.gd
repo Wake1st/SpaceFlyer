@@ -49,7 +49,6 @@ func _integrate_forces(_state):
 				$GrabArea/GrabCollider.add_child(grabbable)
 				
 				grabbableBody.queue_free()
-				print(grabbable)
 
 
 func motion(controls:Controls):
