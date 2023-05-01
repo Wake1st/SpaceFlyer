@@ -39,7 +39,6 @@ func _integrate_forces(_state):
 				global_transform.basis * Vector3.FORWARD * len
 			)
 			debris.linear_velocity = linear_velocity + tangential_velocity
-			#	spinning should throw the debris
 		else:
 			if grabbableBody:
 				grabbing = true

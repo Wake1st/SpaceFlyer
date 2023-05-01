@@ -1,49 +1,18 @@
 extends Node3D
 
 
-@export var itemCount:float = 1.0
+signal win_game
 
-var items:Array[RigidBody3D] = []
-var firstPass:bool = true
 
-func _ready():
-	var deb = preload("res://debris.tscn")
+var requiredCount = 1
+var collectedCount = 0
+var warpReady:bool = false
+
+
+func _on_collection_area_body_entered(body):
+	body.queue_free()
 	
-	for i in itemCount:
-		var item = deb.instantiate()
-		add_child(item)
-		items.append(item)
-	
-	for i in items.size():
-		items[i].transform.origin = Vector3(
-			i - 5,
-			(i % 3) - 1,
-			((i+1) % 3) - 1,
-		)
-		
-		items[i].apply_impulse(
-			global_position.normalized() * randf_range(1,2)
-		)
-		items[i].apply_torque(
-			Vector3(
-				randf_range(-90,90),
-				randf_range(-90,90),
-				randf_range(-90,90)
-			)
-		)
-
-
-func _physics_process(_delta):
-	if firstPass:
-		firstPass = false
-		for i in items.size():
-			items[i].apply_impulse(
-				items[i].transform.origin.normalized() * randf_range(4,40)
-			)
-			items[i].apply_torque(
-				Vector3(
-					randf_range(-40,40),
-					randf_range(-40,40),
-					randf_range(-40,40)
-				)
-			)
+	collectedCount += 1
+	if (collectedCount >= requiredCount):
+		warpReady = true
+		emit_signal("win_game")
