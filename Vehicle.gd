@@ -28,8 +28,7 @@ func _integrate_forces(_state):
 	
 	if docked:
 		print(docked, controls.action)
-		if controls.action:
-			docked = false
+		docked = not controls.action
 	else:
 		motion(controls)
 		grab(controls)
@@ -95,6 +94,7 @@ func grab(controls:Controls):
 
 
 func _on_area_3d_body_entered(body):
+	print(body.name)
 	if grabbable == null:
 		grabbableBody = body
 
