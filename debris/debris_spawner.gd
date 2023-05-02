@@ -10,7 +10,7 @@ var firstPass:bool = true
 
 
 func _ready():
-	deb = preload("res://debris.tscn")
+	deb = preload("res://debris/debris.tscn")
 	
 	SetupLevel()
 
