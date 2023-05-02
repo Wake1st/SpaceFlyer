@@ -1,8 +1,8 @@
 extends RigidBody3D
 
 
-@export var translationSpeed:float = 12.0
-@export var rotationSpeed:float = 1.2
+@export var translationSpeed:float = 36.0
+@export var rotationSpeed:float = 3.0
 
 @export var controlsCapture:Node
 
@@ -20,7 +20,7 @@ var docked:bool = false
 var deb
 
 func _ready():
-	deb = preload("res://debris.tscn")
+	deb = preload("res://debris/debris.tscn")
 
 
 func _integrate_forces(_state):
@@ -74,12 +74,14 @@ func grab(controls:Controls):
 			
 			var debris = deb.instantiate()
 			get_parent().add_child(debris)
-			var grabOrigin = global_transform.basis * $GrabArea/GrabCollider.transform.origin
+			var grabOrigin = global_transform.basis * $GrabArea/ReleasePoint.transform.origin
 			debris.transform.origin = global_position + grabOrigin
-			var armLength = $GrabArea/GrabCollider.transform.origin.length()
+			var armLength = $GrabArea/ReleasePoint.transform.origin.length()
 			var tangential_velocity = angular_velocity.cross(
 				global_transform.basis * Vector3.FORWARD * armLength
 			)
+			debris.transform.basis = transform.basis
+			debris.angular_velocity = angular_velocity
 			debris.linear_velocity = linear_velocity + tangential_velocity
 		else:
 			if grabbableBody:
@@ -88,7 +90,12 @@ func grab(controls:Controls):
 				
 				if (grabbable.get_parent()):
 					grabbable.get_parent().remove_child(grabbable)
-				$GrabArea/GrabCollider.add_child(grabbable)
+				$GrabArea/HoldPoint.add_child(grabbable)
+				
+				var grabLinVel = grabbableBody.linear_velocity
+				var grabAngVel = grabbableBody.angular_velocity
+				linear_velocity += grabLinVel/mass
+				angular_velocity += grabAngVel/mass
 				
 				grabbableBody.queue_free()
 
