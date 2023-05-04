@@ -37,10 +37,10 @@ shape = SubResource("BoxShape3D_g6iso")
 [node name="space_coffin" parent="." instance=ExtResource("2_gmysa")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="PlayerCamera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 
-[node name="HUD" parent="Camera3D" instance=ExtResource("3_teojl")]
+[node name="HUD" parent="PlayerCamera" instance=ExtResource("3_teojl")]
 
 [node name="Controls" type="Node" parent="."]
 script = ExtResource("3_e0mtw")

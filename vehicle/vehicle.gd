@@ -19,6 +19,7 @@ var docked:bool = false
 
 var deb
 
+
 func _ready():
 	deb = preload("res://debris/debris.tscn")
 
@@ -32,6 +33,13 @@ func _integrate_forces(_state):
 	else:
 		motion(controls)
 		grab(controls)
+	
+	var direction = global_transform.basis * linear_velocity
+	print(linear_velocity, direction)
+	$PlayerCamera/HUD.setTarget(Vector2(
+		direction.x,
+		-direction.y
+	))
 
 
 func motion(controls:Controls):
