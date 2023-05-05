@@ -34,12 +34,8 @@ func _integrate_forces(_state):
 		motion(controls)
 		grab(controls)
 	
-	var direction = global_transform.basis * linear_velocity
-	print(linear_velocity, direction)
-	$PlayerCamera/HUD.setTarget(Vector2(
-		direction.x,
-		-direction.y
-	))
+	var direction = transform.basis * linear_velocity
+	$PlayerCamera/AimHologram.transform.origin = direction
 
 
 func motion(controls:Controls):

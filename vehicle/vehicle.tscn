@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bkldao0ffqktn"]
+[gd_scene load_steps=11 format=3 uid="uid://bkldao0ffqktn"]
 
 [ext_resource type="Script" path="res://vehicle/vehicle.gd" id="1_2rruh"]
 [ext_resource type="PackedScene" uid="uid://ls3ccth5saox" path="res://vehicle/space_coffin.glb" id="2_gmysa"]
@@ -7,6 +7,13 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g6iso"]
 size = Vector3(2, 4, 1.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bi5xd"]
+transparency = 1
+albedo_color = Color(0.811765, 0.901961, 0.0980392, 0.470588)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jyrpt"]
+material = SubResource("StandardMaterial3D_bi5xd")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ehlfe"]
 height = 2.8
@@ -41,6 +48,10 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 
 [node name="HUD" parent="PlayerCamera" instance=ExtResource("3_teojl")]
+
+[node name="AimHologram" type="MeshInstance3D" parent="PlayerCamera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+mesh = SubResource("BoxMesh_jyrpt")
 
 [node name="Controls" type="Node" parent="."]
 script = ExtResource("3_e0mtw")
