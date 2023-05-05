@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bkldao0ffqktn"]
+[gd_scene load_steps=9 format=3 uid="uid://bkldao0ffqktn"]
 
 [ext_resource type="Script" path="res://vehicle/vehicle.gd" id="1_2rruh"]
 [ext_resource type="PackedScene" uid="uid://ls3ccth5saox" path="res://vehicle/space_coffin.glb" id="2_gmysa"]
 [ext_resource type="Script" path="res://vehicle/Controls.gd" id="3_e0mtw"]
+[ext_resource type="PackedScene" uid="uid://dny1y411bhhii" path="res://ui/hud.tscn" id="3_teojl"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g6iso"]
 size = Vector3(2, 4, 1.2)
@@ -38,6 +39,8 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+
+[node name="HUD" parent="Camera3D" instance=ExtResource("3_teojl")]
 
 [node name="Controls" type="Node" parent="."]
 script = ExtResource("3_e0mtw")
