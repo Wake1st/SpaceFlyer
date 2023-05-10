@@ -17,6 +17,13 @@ var stopRotation:= false
 var grab:=false
 var action:=false
 
+enum LOOK_DIRECTION {
+	LEFT,
+	FORWARD,
+	RIGHT,
+}
+var lookDirection:= LOOK_DIRECTION.FORWARD
+
 
 func _capture()->Controls:
 	direction = Vector3.ZERO
@@ -30,7 +37,7 @@ func _capture()->Controls:
 	
 	if controlMode == CONTROL_MODE.TRANSLATION:
 		if stopTranslation == false:
-			direction.z += int(Input.get_action_strength("backward")) - int(Input.is_action_pressed("forward"))
+			direction.z += int(Input.is_action_pressed("backward")) - int(Input.is_action_pressed("forward"))
 			direction.x += int(Input.is_action_pressed("right")) - int(Input.get_action_strength("left"))
 			direction.y += int(Input.is_action_pressed("up")) - int(Input.get_action_strength("down"))
 	else:
@@ -41,7 +48,21 @@ func _capture()->Controls:
 	
 	grab = Input.is_action_just_pressed("grab")
 	action = Input.is_action_just_pressed("action")
-
+	
+	var lookRight = Input.is_action_just_pressed("look_right") 
+	var lookLeft = Input.is_action_just_pressed("look_left")
+	
+	if lookLeft:
+		if lookDirection == LOOK_DIRECTION.RIGHT:
+			lookDirection = LOOK_DIRECTION.FORWARD
+		elif lookDirection == LOOK_DIRECTION.FORWARD:
+			lookDirection = LOOK_DIRECTION.LEFT
+	elif lookRight:
+		if lookDirection == LOOK_DIRECTION.LEFT:
+			lookDirection = LOOK_DIRECTION.FORWARD
+		elif lookDirection == LOOK_DIRECTION.FORWARD:
+			lookDirection = LOOK_DIRECTION.RIGHT
+	
 	return self
 
 

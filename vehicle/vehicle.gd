@@ -32,6 +32,8 @@ func _integrate_forces(_state):
 	else:
 		motion(controls)
 		grab(controls)
+	
+	look_around(controls.lookDirection)
 
 
 func motion(controls:Controls):
@@ -98,6 +100,16 @@ func grab(controls:Controls):
 				angular_velocity += grabAngVel/mass
 				
 				grabbableBody.queue_free()
+
+
+func look_around(lookDirection:Controls.LOOK_DIRECTION):
+	match(lookDirection):
+		Controls.LOOK_DIRECTION.LEFT:
+			%PlayerCamera.transform.basis = %LookDirections/Left.transform.basis
+		Controls.LOOK_DIRECTION.FORWARD:
+			%PlayerCamera.transform.basis = %LookDirections/Forward.transform.basis
+		Controls.LOOK_DIRECTION.RIGHT:
+			%PlayerCamera.transform.basis = %LookDirections/Right.transform.basis
 
 
 func _on_area_3d_body_entered(body):

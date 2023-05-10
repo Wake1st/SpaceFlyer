@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://cr1grvey53ykl"]
+
+[ext_resource type="Script" path="res://ui/radar/radar_panel.gd" id="1_gu375"]
+[ext_resource type="Texture2D" uid="uid://cbthb8un51jqo" path="res://ui/radar/ball.png" id="2_5plu5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_185hk"]
+albedo_color = Color(0.152941, 0.380392, 0.509804, 0.588235)
+
+[sub_resource type="QuadMesh" id="QuadMesh_yedgm"]
+
+[node name="RadarPanel" type="Node3D"]
+script = ExtResource("1_gu375")
+
+[node name="Screen" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_185hk")
+mesh = SubResource("QuadMesh_yedgm")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+
+[node name="Node2D" type="Node2D" parent="SubViewport"]
+
+[node name="Ball" type="Sprite2D" parent="SubViewport/Node2D"]
+position = Vector2(300, 200)
+texture = ExtResource("2_5plu5")
