@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://djrm7fli24150"]
+
+[ext_resource type="Script" path="res://hardware/radar_antena/radar_antena.gd" id="1_4la5x"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ifbmd"]
+top_radius = 0.04
+bottom_radius = 0.1
+height = 0.5
+
+[node name="RadarAntena" type="Node3D"]
+script = ExtResource("1_4la5x")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+mesh = SubResource("CylinderMesh_ifbmd")

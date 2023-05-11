@@ -15,7 +15,7 @@ var grabbing:bool = false
 
 var dockable:bool = false
 var docked:bool = false
-@export var dock:Transform3D
+var dock:Transform3D
 
 var deb
 
@@ -135,3 +135,7 @@ func print_info(controls:Controls):
 		" | anve: ", angular_velocity, 
 		" | glb: ", global_transform.basis, 
 	)
+
+
+func _on_debris_spawner_reset_level(items:Array[RigidBody3D]):
+	%Hardware/RadarAntena.reset_items(items)
