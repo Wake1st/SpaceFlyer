@@ -15,7 +15,7 @@ var grabbing:bool = false
 
 var dockable:bool = false
 var docked:bool = false
-@export var dock:Transform3D
+var dock:Transform3D
 
 var deb
 
@@ -32,6 +32,8 @@ func _integrate_forces(_state):
 	else:
 		motion(controls)
 		grab(controls)
+	
+	look_around(controls.lookDirection)
 
 
 func motion(controls:Controls):
@@ -100,6 +102,16 @@ func grab(controls:Controls):
 				grabbableBody.queue_free()
 
 
+func look_around(lookDirection:Controls.LOOK_DIRECTION):
+	match(lookDirection):
+		Controls.LOOK_DIRECTION.LEFT:
+			%PlayerCamera.transform.basis = %LookDirections/Left.transform.basis
+		Controls.LOOK_DIRECTION.FORWARD:
+			%PlayerCamera.transform.basis = %LookDirections/Forward.transform.basis
+		Controls.LOOK_DIRECTION.RIGHT:
+			%PlayerCamera.transform.basis = %LookDirections/Right.transform.basis
+
+
 func _on_area_3d_body_entered(body):
 	print(body.name)
 	if grabbable == null:
@@ -123,3 +135,7 @@ func print_info(controls:Controls):
 		" | anve: ", angular_velocity, 
 		" | glb: ", global_transform.basis, 
 	)
+
+
+func _on_debris_spawner_reset_level(items:Array[RigidBody3D]):
+	%Hardware/RadarAntena.reset_items(items)

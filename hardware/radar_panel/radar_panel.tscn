@@ -1,0 +1,82 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://hardware/radar_panel/radar_panel.gd" id="1_4tnm2"]
+[ext_resource type="PackedScene" path="res://hardware/radar_panel/radar_ping.tscn" id="2_7ai4k"]
+[ext_resource type="StyleBox" uid="uid://dr0e5uu6j0akk" path="res://hardware/radar_panel/radar_background.tres" id="3_wh8w6"]
+[ext_resource type="Texture2D" uid="uid://b5gynx17roc8" path="res://ui/aim retical.png" id="4_1peoe"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_185hk"]
+albedo_color = Color(0.152941, 0.380392, 0.509804, 0.588235)
+
+[sub_resource type="QuadMesh" id="QuadMesh_yedgm"]
+
+[node name="RadarPanel" type="Node3D" node_paths=PackedStringArray("ping")]
+script = ExtResource("1_4tnm2")
+ping = NodePath("Screen/Node2D/RadarPing")
+
+[node name="Device" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_185hk")
+mesh = SubResource("QuadMesh_yedgm")
+
+[node name="Screen" type="SubViewport" parent="."]
+
+[node name="Node2D" type="Node2D" parent="Screen"]
+
+[node name="RadarPing" parent="Screen/Node2D" instance=ExtResource("2_7ai4k")]
+
+[node name="XYScan" type="Panel" parent="Screen/Node2D"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = 262.0
+offset_right = 250.0
+offset_bottom = 512.0
+grow_vertical = 0
+theme_override_styles/panel = ExtResource("3_wh8w6")
+metadata/_edit_use_anchors_ = true
+
+[node name="XYCenter" type="Sprite2D" parent="Screen/Node2D"]
+z_index = 100
+position = Vector2(125, 387)
+texture = ExtResource("4_1peoe")
+
+[node name="XZScan" type="Panel" parent="Screen/Node2D"]
+offset_right = 250.0
+offset_bottom = 250.0
+theme_override_styles/panel = ExtResource("3_wh8w6")
+metadata/_edit_use_anchors_ = true
+
+[node name="XZCenter" type="Sprite2D" parent="Screen/Node2D"]
+z_index = 100
+position = Vector2(387, 387)
+texture = ExtResource("4_1peoe")
+
+[node name="ZYScan" type="Panel" parent="Screen/Node2D"]
+layout_direction = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 262.0
+offset_top = 262.0
+offset_right = 512.0
+offset_bottom = 512.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = ExtResource("3_wh8w6")
+metadata/_edit_use_anchors_ = true
+
+[node name="ZYCenter" type="Sprite2D" parent="Screen/Node2D"]
+z_index = 100
+position = Vector2(125, 125)
+texture = ExtResource("4_1peoe")
+
+[node name="Control" type="Control" parent="Screen"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Screen"]

@@ -1,6 +1,9 @@
 extends Node3D
 
 
+signal reset_level(i:Array[RigidBody3D])
+
+
 @export var itemCount:float = 1.0
 
 var deb
@@ -21,6 +24,7 @@ func _physics_process(_delta):
 	
 	if firstPass:	
 		StartLevel()
+		emit_signal("reset_level", items)
 
 
 func SetupLevel():

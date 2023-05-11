@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bkldao0ffqktn"]
+[gd_scene load_steps=11 format=3 uid="uid://bkldao0ffqktn"]
 
 [ext_resource type="Script" path="res://vehicle/vehicle.gd" id="1_2rruh"]
 [ext_resource type="PackedScene" uid="uid://ls3ccth5saox" path="res://vehicle/space_coffin.glb" id="2_gmysa"]
 [ext_resource type="Script" path="res://vehicle/Controls.gd" id="3_e0mtw"]
 [ext_resource type="PackedScene" uid="uid://dny1y411bhhii" path="res://ui/hud.tscn" id="3_teojl"]
+[ext_resource type="PackedScene" uid="uid://bt3fcus8jnqn8" path="res://hardware/radar/radar_antena.tscn" id="5_lpjwg"]
+[ext_resource type="PackedScene" uid="uid://vs6g5algm37w" path="res://hardware/radar_panel/radar_panel.tscn" id="6_71dma"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g6iso"]
 size = Vector3(2, 4, 1.2)
@@ -37,10 +39,11 @@ shape = SubResource("BoxShape3D_g6iso")
 [node name="space_coffin" parent="." instance=ExtResource("2_gmysa")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+[node name="PlayerCamera" type="Camera3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0.9, 0)
 
-[node name="HUD" parent="Camera3D" instance=ExtResource("3_teojl")]
+[node name="HUD" parent="PlayerCamera" instance=ExtResource("3_teojl")]
 
 [node name="Controls" type="Node" parent="."]
 script = ExtResource("3_e0mtw")
@@ -66,5 +69,27 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, -1)
 [node name="ReleasePoint" type="Node3D" parent="GrabArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, -2)
 
+[node name="LookDirections" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="Left" type="RayCast3D" parent="LookDirections"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0.9, 0)
+
+[node name="Forward" type="RayCast3D" parent="LookDirections"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+
+[node name="Right" type="RayCast3D" parent="LookDirections"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0.9, 0)
+
+[node name="Hardware" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="RadarAntena" parent="Hardware" instance=ExtResource("5_lpjwg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="RadarPanel" parent="Hardware" instance=ExtResource("6_71dma")]
+transform = Transform3D(0.565685, 0, -0.565685, 0, 0.8, 0, 0.565685, 0, 0.565685, 0.7, 0.9, -0.4)
+
 [connection signal="body_entered" from="GrabArea" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="GrabArea" to="." method="_on_area_3d_body_exited"]
+[connection signal="received_item_coords" from="Hardware/RadarAntena" to="Hardware/RadarPanel" method="_on_radar_antena_received_item_coords"]
