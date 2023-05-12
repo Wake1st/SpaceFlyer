@@ -1,6 +1,7 @@
 extends Node3D
 
 
+signal received_item(body:RigidBody3D)
 signal win_game
 
 
@@ -14,6 +15,7 @@ func _on_collection_area_body_entered(body):
 		print("vehicle entered")
 		body.move(%VehiclePort.transform)
 	else:
+		emit_signal("received_item", body)
 		body.queue_free()
 		
 		collectedCount += 1

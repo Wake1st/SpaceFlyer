@@ -59,5 +59,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 128, 128)
 script = ExtResource("5_2gvga")
 ship = NodePath("../Ship")
 
+[connection signal="received_item" from="Ship" to="Vehicle" method="_on_ship_received_item"]
 [connection signal="win_game" from="Ship" to="LevelManager" method="_on_ship_win_game"]
 [connection signal="reset_level" from="DebrisSpawner" to="Vehicle" method="_on_debris_spawner_reset_level"]

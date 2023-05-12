@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://ls3ccth5saox" path="res://vehicle/space_coffin.glb" id="2_gmysa"]
 [ext_resource type="Script" path="res://vehicle/Controls.gd" id="3_e0mtw"]
 [ext_resource type="PackedScene" uid="uid://dny1y411bhhii" path="res://ui/hud.tscn" id="3_teojl"]
-[ext_resource type="PackedScene" uid="uid://bt3fcus8jnqn8" path="res://hardware/radar/radar_antena.tscn" id="5_lpjwg"]
-[ext_resource type="PackedScene" uid="uid://vs6g5algm37w" path="res://hardware/radar_panel/radar_panel.tscn" id="6_71dma"]
+[ext_resource type="PackedScene" path="res://hardware/radar_panel/radar_panel.tscn" id="6_71dma"]
+[ext_resource type="PackedScene" uid="uid://djrm7fli24150" path="res://hardware/radar_antena/radar_antena.tscn" id="6_wi107"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g6iso"]
 size = Vector3(2, 4, 1.2)
@@ -84,11 +84,11 @@ transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 
 [node name="Hardware" type="Node3D" parent="."]
 unique_name_in_owner = true
 
-[node name="RadarAntena" parent="Hardware" instance=ExtResource("5_lpjwg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-
 [node name="RadarPanel" parent="Hardware" instance=ExtResource("6_71dma")]
 transform = Transform3D(0.565685, 0, -0.565685, 0, 0.8, 0, 0.565685, 0, 0.565685, 0.7, 0.9, -0.4)
+
+[node name="RadarAntena" parent="Hardware" instance=ExtResource("6_wi107")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
 [connection signal="body_entered" from="GrabArea" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="GrabArea" to="." method="_on_area_3d_body_exited"]
