@@ -19,6 +19,7 @@ var dock:Transform3D
 
 var deb
 
+
 func _ready():
 	deb = preload("res://debris/debris.tscn")
 
@@ -85,6 +86,8 @@ func grab(controls:Controls):
 			debris.transform.basis = transform.basis
 			debris.angular_velocity = angular_velocity
 			debris.linear_velocity = linear_velocity + tangential_velocity
+			
+			%Hardware/RadarAntena.add_item(debris)
 		else:
 			if grabbableBody:
 				grabbing = true
@@ -99,6 +102,7 @@ func grab(controls:Controls):
 				linear_velocity += grabLinVel/mass
 				angular_velocity += grabAngVel/mass
 				
+				%Hardware/RadarAntena.remove_item(grabbableBody)
 				grabbableBody.queue_free()
 
 
@@ -139,3 +143,7 @@ func print_info(controls:Controls):
 
 func _on_debris_spawner_reset_level(items:Array[RigidBody3D]):
 	%Hardware/RadarAntena.reset_items(items)
+
+
+func _on_ship_received_item(body):
+	$Hardware/RadarAntena.remove_item(body)
