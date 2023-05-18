@@ -32,7 +32,7 @@ func _physics_process(_delta):
 		
 #		print("item: ", item)
 		var originToItem = item.global_position - global_position
-		var local = transform.basis * originToItem
+		var local = originToItem * global_transform.basis
 		print("vec: ", originToItem, local)
 		
 		var coord:RadarCoord = RadarCoord.new()
