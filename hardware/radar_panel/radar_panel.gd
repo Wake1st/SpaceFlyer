@@ -3,6 +3,7 @@ extends Node3D
 
 @export var ping:Sprite2D
 @export var scanningDistance = 400
+@export var innerBorder = 10
 var pingScale
 
 var XYWindow:Panel
@@ -59,9 +60,22 @@ func remove_all_children(window:Panel):
 
 func add_ping(window:Panel, pos:Vector2, flip:Vector2):
 	var p = ping.duplicate()
-	p.transform[2] = Vector2(
+	var t = Vector2(
 		flip.x * pos.x, 
 		flip.y * pos.y
 	) * pingScale + windowCenter
-	print(p.transform[2])
+	
+	var clampHorizontal = clamp(
+		t.x,
+		innerBorder,
+		window.size.x - innerBorder,
+	)
+	var clampVertical = clamp(
+		t.y,
+		innerBorder,
+		window.size.y - innerBorder,
+	)
+	
+	p.transform[2] = Vector2(clampHorizontal, clampVertical)
+#	print("screen coords: ", clampHorizontal, ' | ', clampVertical, t)
 	window.add_child(p)
