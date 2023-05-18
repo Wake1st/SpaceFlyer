@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3]
+[gd_scene load_steps=7 format=3 uid="uid://b83qk7bj3abn"]
 
 [ext_resource type="Script" path="res://hardware/radar_panel/radar_panel.gd" id="1_4tnm2"]
 [ext_resource type="PackedScene" path="res://hardware/radar_panel/radar_ping.tscn" id="2_7ai4k"]

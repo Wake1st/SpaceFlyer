@@ -10,7 +10,7 @@ var coords:Array[RadarCoord] = []
 
 func reset_items(i:Array[RigidBody3D]):
 	items = i
-	print("reset items: ", items)
+#	print("reset items: ", items)
 
 
 func add_item(i: RigidBody3D):
@@ -33,7 +33,7 @@ func _physics_process(_delta):
 #		print("item: ", item)
 		var originToItem = item.global_position - global_position
 		var local = originToItem * global_transform.basis
-		print("vec: ", originToItem, local)
+#		print("vec: ", originToItem, local)
 		
 		var coord:RadarCoord = RadarCoord.new()
 #		print(coord)

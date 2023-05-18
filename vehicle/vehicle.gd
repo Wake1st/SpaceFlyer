@@ -28,7 +28,7 @@ func _integrate_forces(_state):
 	var controls:Controls = controlsCapture._capture()
 	
 	if docked:
-		print(docked, controls.action)
+#		print(docked, controls.action)
 		docked = not controls.action
 	else:
 		motion(controls)
@@ -117,7 +117,7 @@ func look_around(lookDirection:Controls.LOOK_DIRECTION):
 
 
 func _on_area_3d_body_entered(body):
-	print(body.name)
+#	print(body.name)
 	if grabbable == null:
 		grabbableBody = body
 

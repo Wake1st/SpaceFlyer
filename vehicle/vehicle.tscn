@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ls3ccth5saox" path="res://vehicle/space_coffin.glb" id="2_gmysa"]
 [ext_resource type="Script" path="res://vehicle/Controls.gd" id="3_e0mtw"]
 [ext_resource type="PackedScene" uid="uid://dny1y411bhhii" path="res://ui/hud.tscn" id="3_teojl"]
-[ext_resource type="PackedScene" path="res://hardware/radar_panel/radar_panel.tscn" id="6_71dma"]
+[ext_resource type="PackedScene" uid="uid://b83qk7bj3abn" path="res://hardware/radar_panel/radar_panel.tscn" id="6_71dma"]
 [ext_resource type="PackedScene" uid="uid://djrm7fli24150" path="res://hardware/radar_antena/radar_antena.tscn" id="6_wi107"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g6iso"]
