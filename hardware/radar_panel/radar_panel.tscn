@@ -1,19 +1,22 @@
-[gd_scene load_steps=12 format=3 uid="uid://b83qk7bj3abn"]
+[gd_scene load_steps=14 format=3 uid="uid://b83qk7bj3abn"]
 
 [ext_resource type="Script" path="res://hardware/radar_panel/radar_panel.gd" id="1_4tnm2"]
 [ext_resource type="PackedScene" path="res://hardware/radar_panel/radar_ping.tscn" id="2_7ai4k"]
+[ext_resource type="Texture2D" uid="uid://goxtvblbu1f2" path="res://hardware/radar_panel/assets/radar-center.png" id="3_bj0be"]
 [ext_resource type="StyleBox" uid="uid://dr0e5uu6j0akk" path="res://hardware/radar_panel/radar_background.tres" id="3_wh8w6"]
-[ext_resource type="Texture2D" uid="uid://b5gynx17roc8" path="res://ui/aim retical.png" id="4_1peoe"]
-[ext_resource type="Texture2D" uid="uid://c65s56qb3jpqx" path="res://hardware/radar_panel/thrust-up.png" id="5_yamgj"]
-[ext_resource type="Texture2D" uid="uid://vg670m7inaf6" path="res://hardware/radar_panel/thrust-towards.png" id="6_vvny7"]
-[ext_resource type="Texture2D" uid="uid://vvgyokovp66l" path="res://hardware/radar_panel/thrust-away.png" id="7_c1keg"]
-[ext_resource type="Texture2D" uid="uid://dav1jxh38d8dv" path="res://hardware/radar_panel/rotation-pitch-neg.png" id="8_cdtdj"]
-[ext_resource type="Texture2D" uid="uid://dpfp5yk1kqvb0" path="res://hardware/radar_panel/rotation-roll-neg.png" id="9_mkgen"]
+[ext_resource type="Texture2D" uid="uid://gctmrua75bu4" path="res://hardware/radar_panel/assets/ping.png" id="5_y18qg"]
+[ext_resource type="Texture2D" uid="uid://djuqigy1exkwc" path="res://hardware/radar_panel/assets/thrust-up.png" id="6_36iww"]
+[ext_resource type="Texture2D" uid="uid://ci3mha1t1pyhm" path="res://hardware/radar_panel/assets/thrust-towards.png" id="7_r0umt"]
+[ext_resource type="Texture2D" uid="uid://bjihdejwr3mbm" path="res://hardware/radar_panel/assets/thrust-away.png" id="8_u45e5"]
+[ext_resource type="Texture2D" uid="uid://boma4iqiehv1g" path="res://hardware/radar_panel/assets/rotate-forward.png" id="9_mxnll"]
+[ext_resource type="Texture2D" uid="uid://b1m5ixqx8nvvj" path="res://hardware/radar_panel/assets/rotate-ccw.png" id="11_daio2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_185hk"]
 albedo_color = Color(0.152941, 0.380392, 0.509804, 0.588235)
 
 [sub_resource type="QuadMesh" id="QuadMesh_yedgm"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ab462"]
 
 [node name="RadarPanel" type="Node3D" node_paths=PackedStringArray("ping")]
 script = ExtResource("1_4tnm2")
@@ -42,7 +45,7 @@ metadata/_edit_use_anchors_ = true
 [node name="XYCenter" type="Sprite2D" parent="Screen/Active"]
 z_index = 100
 position = Vector2(125, 387)
-texture = ExtResource("4_1peoe")
+texture = ExtResource("3_bj0be")
 
 [node name="XZScan" type="Panel" parent="Screen/Active"]
 offset_right = 250.0
@@ -53,7 +56,7 @@ metadata/_edit_use_anchors_ = true
 [node name="XZCenter" type="Sprite2D" parent="Screen/Active"]
 z_index = 100
 position = Vector2(387, 387)
-texture = ExtResource("4_1peoe")
+texture = ExtResource("3_bj0be")
 
 [node name="ZYScan" type="Panel" parent="Screen/Active"]
 layout_direction = 1
@@ -74,7 +77,7 @@ metadata/_edit_use_anchors_ = true
 [node name="ZYCenter" type="Sprite2D" parent="Screen/Active"]
 z_index = 100
 position = Vector2(125, 125)
-texture = ExtResource("4_1peoe")
+texture = ExtResource("3_bj0be")
 
 [node name="References" type="Control" parent="Screen"]
 visible = false
@@ -85,49 +88,49 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="RadarPing" parent="Screen/References" instance=ExtResource("2_7ai4k")]
+texture = ExtResource("5_y18qg")
 
 [node name="ThrustUp" type="Sprite2D" parent="Screen/References"]
-texture = ExtResource("5_yamgj")
+texture = ExtResource("6_36iww")
 
 [node name="ThrustTowards" type="Sprite2D" parent="Screen/References"]
-texture = ExtResource("6_vvny7")
+texture = ExtResource("7_r0umt")
 
 [node name="ThrustAway" type="Sprite2D" parent="Screen/References"]
-texture = ExtResource("7_c1keg")
+texture = ExtResource("8_u45e5")
 
 [node name="ThrustRight" type="Sprite2D" parent="Screen/References"]
 rotation = 1.5708
-texture = ExtResource("5_yamgj")
+texture = ExtResource("6_36iww")
 
 [node name="ThrustLeft" type="Sprite2D" parent="Screen/References"]
 rotation = -1.5708
-texture = ExtResource("5_yamgj")
+texture = ExtResource("6_36iww")
 
 [node name="ThrustDown" type="Sprite2D" parent="Screen/References"]
-texture = ExtResource("5_yamgj")
+texture = ExtResource("6_36iww")
 flip_v = true
 
 [node name="PitchPos" type="Sprite2D" parent="Screen/References"]
-texture = ExtResource("8_cdtdj")
+texture = ExtResource("9_mxnll")
 flip_v = true
 
 [node name="PitchNeg" type="Sprite2D" parent="Screen/References"]
-texture = ExtResource("8_cdtdj")
+texture = ExtResource("9_mxnll")
 
 [node name="YawPos" type="Sprite2D" parent="Screen/References"]
 rotation = -1.5708
-texture = ExtResource("8_cdtdj")
+texture = ExtResource("9_mxnll")
 
 [node name="YawNeg" type="Sprite2D" parent="Screen/References"]
 rotation = 1.5708
-texture = ExtResource("8_cdtdj")
-flip_v = true
+texture = ExtResource("9_mxnll")
 
 [node name="RollPos" type="Sprite2D" parent="Screen/References"]
-texture = ExtResource("9_mkgen")
+texture = ExtResource("11_daio2")
 
 [node name="RollNeg" type="Sprite2D" parent="Screen/References"]
-texture = ExtResource("9_mkgen")
-flip_v = true
+texture = SubResource("CompressedTexture2D_ab462")
+flip_h = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Screen"]

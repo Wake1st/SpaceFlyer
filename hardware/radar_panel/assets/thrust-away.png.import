@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpfp5yk1kqvb0"
-path="res://.godot/imported/rotation-roll-neg.png-d6ac1085442cd314bcf645fef8093da9.ctex"
+uid="uid://bjihdejwr3mbm"
+path="res://.godot/imported/thrust-away.png-7fe9636deb4465534214658b930f5979.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://hardware/radar_panel/rotation-roll-neg.png"
-dest_files=["res://.godot/imported/rotation-roll-neg.png-d6ac1085442cd314bcf645fef8093da9.ctex"]
+source_file="res://hardware/radar_panel/assets/thrust-away.png"
+dest_files=["res://.godot/imported/thrust-away.png-7fe9636deb4465534214658b930f5979.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c65s56qb3jpqx"
-path="res://.godot/imported/thrust-up.png-bfbcf8c0b0ab61f7ef7dd4ce08d49c22.ctex"
+uid="uid://boma4iqiehv1g"
+path="res://.godot/imported/rotate-forward.png-93402d232d2daa5ffe3796a9a53db827.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://hardware/radar_panel/thrust-up.png"
-dest_files=["res://.godot/imported/thrust-up.png-bfbcf8c0b0ab61f7ef7dd4ce08d49c22.ctex"]
+source_file="res://hardware/radar_panel/assets/rotate-forward.png"
+dest_files=["res://.godot/imported/rotate-forward.png-93402d232d2daa5ffe3796a9a53db827.ctex"]
 
 [params]
 

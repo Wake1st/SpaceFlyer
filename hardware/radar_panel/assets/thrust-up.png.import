@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dav1jxh38d8dv"
-path="res://.godot/imported/rotation-pitch-neg.png-97d11c5ccbd557d3b02616f7881455b7.ctex"
+uid="uid://djuqigy1exkwc"
+path="res://.godot/imported/thrust-up.png-465ba2d3e2c6af1969903e059c07c6de.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://hardware/radar_panel/rotation-pitch-neg.png"
-dest_files=["res://.godot/imported/rotation-pitch-neg.png-97d11c5ccbd557d3b02616f7881455b7.ctex"]
+source_file="res://hardware/radar_panel/assets/thrust-up.png"
+dest_files=["res://.godot/imported/thrust-up.png-465ba2d3e2c6af1969903e059c07c6de.ctex"]
 
 [params]
 

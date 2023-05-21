@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vvgyokovp66l"
-path="res://.godot/imported/thrust-away.png-b210690867cce19bc0dc4e3aee5caab7.ctex"
+uid="uid://b1m5ixqx8nvvj"
+path="res://.godot/imported/rotate-ccw.png-9aef8dfae7e084e8fd2d4d0c7b5eba22.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://hardware/radar_panel/thrust-away.png"
-dest_files=["res://.godot/imported/thrust-away.png-b210690867cce19bc0dc4e3aee5caab7.ctex"]
+source_file="res://hardware/radar_panel/assets/rotate-ccw.png"
+dest_files=["res://.godot/imported/rotate-ccw.png-9aef8dfae7e084e8fd2d4d0c7b5eba22.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cbthb8un51jqo"
-path="res://.godot/imported/ball.png-1f7aa8d44a4ae9213421523fabd96935.ctex"
+uid="uid://gctmrua75bu4"
+path="res://.godot/imported/ping.png-51d4c888307cd7322eb0134cdb3a313e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://hardware/radar_panel/ball.png"
-dest_files=["res://.godot/imported/ball.png-1f7aa8d44a4ae9213421523fabd96935.ctex"]
+source_file="res://hardware/radar_panel/assets/ping.png"
+dest_files=["res://.godot/imported/ping.png-51d4c888307cd7322eb0134cdb3a313e.ctex"]
 
 [params]
 
