@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3]
-
-[ext_resource type="Texture2D" uid="uid://cbthb8un51jqo" path="res://hardware/radar_panel/ball.png" id="1_6fxnx"]
-
-[node name="RadarPing" type="Sprite2D"]
-texture = ExtResource("1_6fxnx")

@@ -1,7 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://b83qk7bj3abn"]
+[gd_scene load_steps=13 format=3 uid="uid://b83qk7bj3abn"]
 
 [ext_resource type="Script" path="res://hardware/radar_panel/radar_panel.gd" id="1_4tnm2"]
-[ext_resource type="PackedScene" path="res://hardware/radar_panel/radar_ping.tscn" id="2_7ai4k"]
 [ext_resource type="Texture2D" uid="uid://goxtvblbu1f2" path="res://hardware/radar_panel/assets/radar-center.png" id="3_bj0be"]
 [ext_resource type="StyleBox" uid="uid://dr0e5uu6j0akk" path="res://hardware/radar_panel/radar_background.tres" id="3_wh8w6"]
 [ext_resource type="Texture2D" uid="uid://gctmrua75bu4" path="res://hardware/radar_panel/assets/ping.png" id="5_y18qg"]
@@ -18,9 +17,8 @@ albedo_color = Color(0.152941, 0.380392, 0.509804, 0.588235)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ab462"]
 
-[node name="RadarPanel" type="Node3D" node_paths=PackedStringArray("ping")]
+[node name="RadarPanel" type="Node3D"]
 script = ExtResource("1_4tnm2")
-ping = NodePath("Screen/References/RadarPing")
 
 [node name="Device" type="MeshInstance3D" parent="."]
 material_override = SubResource("StandardMaterial3D_185hk")
@@ -87,7 +85,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="RadarPing" parent="Screen/References" instance=ExtResource("2_7ai4k")]
+[node name="RadarPing" type="Sprite2D" parent="Screen/References"]
 texture = ExtResource("5_y18qg")
 
 [node name="ThrustUp" type="Sprite2D" parent="Screen/References"]

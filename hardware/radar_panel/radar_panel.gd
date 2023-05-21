@@ -1,10 +1,11 @@
 extends Node3D
 
 
-@export var ping:Sprite2D
 @export var controlsCapture:Node
 @export var scanningDistance = 1000
 @export var innerBorder = 10
+
+var ping:Sprite2D
 var pingScale
 
 var XYWindow:Panel
@@ -55,6 +56,7 @@ func screen_to_device():
 
 
 func reference_capture():
+	ping = %Screen/References/RadarPing
 	XYWindow = %Screen/Active/XYScan
 	XZWindow = %Screen/Active/XZScan
 	ZYWindow = %Screen/Active/ZYScan
@@ -182,7 +184,6 @@ func draw_ping(window:Panel, pos:Vector2, flip:Vector2):
 	)
 	
 	p.transform[2] = Vector2(clampHorizontal, clampVertical)
-#	print("screen coords: ", clampHorizontal, ' | ', clampVertical, t)
 	window.add_child(p)
 
 
