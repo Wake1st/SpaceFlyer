@@ -3,7 +3,7 @@ extends Node3D
 
 @export var controlsCapture:Node
 @export var scanningDistance = 1000
-@export var innerBorder = 10
+@export var innerBorder = 6
 
 var ping:Sprite2D
 var pingScale
@@ -57,6 +57,7 @@ func screen_to_device():
 
 func reference_capture():
 	ping = %Screen/References/RadarPing
+	
 	XYWindow = %Screen/Active/XYScan
 	XZWindow = %Screen/Active/XZScan
 	ZYWindow = %Screen/Active/ZYScan
@@ -95,28 +96,28 @@ func clear_window(window:Panel):
 
 func draw_thrusts(dir:Vector3):
 	if dir.x > 0:
-		draw_motion(XYWindow,thrustRight)
 		draw_motion(XZWindow,thrustRight)
+		draw_motion(XYWindow,thrustRight)
 		draw_motion(ZYWindow,thrustTowards)
 	if dir.x < 0:
-		draw_motion(XYWindow,thrustLeft)
 		draw_motion(XZWindow,thrustLeft)
+		draw_motion(XYWindow,thrustLeft)
 		draw_motion(ZYWindow,thrustAway)
 	if dir.y > 0:
-		draw_motion(XYWindow,thrustUp)
 		draw_motion(XZWindow,thrustTowards)
+		draw_motion(XYWindow,thrustUp)
 		draw_motion(ZYWindow,thrustUp)
 	if dir.y < 0:
-		draw_motion(XYWindow,thrustDown)
 		draw_motion(XZWindow,thrustAway)
+		draw_motion(XYWindow,thrustDown)
 		draw_motion(ZYWindow,thrustDown)
 	if dir.z > 0:
-		draw_motion(XYWindow,thrustTowards)
 		draw_motion(XZWindow,thrustDown)
+		draw_motion(XYWindow,thrustTowards)
 		draw_motion(ZYWindow,thrustLeft)
 	if dir.z < 0:
-		draw_motion(XYWindow,thrustAway)
 		draw_motion(XZWindow,thrustUp)
+		draw_motion(XYWindow,thrustAway)
 		draw_motion(ZYWindow,thrustRight)
 
 
@@ -153,13 +154,12 @@ func draw_motion(window:Panel, sprite:Sprite2D):
 		window.position.x + window.size.x/2,
 		window.position.y + window.size.y/2
 	)
-	print("pos: ", s.position)
 	window.add_child(s)
+	print("pos: ", window.get_child(window.get_child_count()-1).position)
 
 
 func draw_items():
 	for coord in pingCoords:
-#		print("coords: ", coord.xy, coord.xz, coord.zy)
 		draw_ping(XYWindow, coord.xy, xyFlip)
 		draw_ping(XZWindow, coord.xz, xzFlip)
 		draw_ping(ZYWindow, coord.zy, zyFlip)
@@ -183,7 +183,7 @@ func draw_ping(window:Panel, pos:Vector2, flip:Vector2):
 		window.size.y - innerBorder,
 	)
 	
-	p.transform[2] = Vector2(clampHorizontal, clampVertical)
+	p.position = Vector2(clampHorizontal, clampVertical)
 	window.add_child(p)
 
 

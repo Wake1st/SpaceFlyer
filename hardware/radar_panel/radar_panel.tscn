@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b83qk7bj3abn"]
+[gd_scene load_steps=12 format=3 uid="uid://b83qk7bj3abn"]
 
 [ext_resource type="Script" path="res://hardware/radar_panel/radar_panel.gd" id="1_4tnm2"]
 [ext_resource type="Texture2D" uid="uid://goxtvblbu1f2" path="res://hardware/radar_panel/assets/radar-center.png" id="3_bj0be"]
@@ -15,8 +15,6 @@ albedo_color = Color(0.152941, 0.380392, 0.509804, 0.588235)
 
 [sub_resource type="QuadMesh" id="QuadMesh_yedgm"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ab462"]
-
 [node name="RadarPanel" type="Node3D"]
 script = ExtResource("1_4tnm2")
 
@@ -28,6 +26,17 @@ mesh = SubResource("QuadMesh_yedgm")
 unique_name_in_owner = true
 
 [node name="Active" type="Node2D" parent="Screen"]
+
+[node name="XZScan" type="Panel" parent="Screen/Active"]
+offset_right = 250.0
+offset_bottom = 250.0
+theme_override_styles/panel = ExtResource("3_wh8w6")
+metadata/_edit_use_anchors_ = true
+
+[node name="XZCenter" type="Sprite2D" parent="Screen/Active"]
+z_index = 100
+position = Vector2(125, 125)
+texture = ExtResource("3_bj0be")
 
 [node name="XYScan" type="Panel" parent="Screen/Active"]
 anchors_preset = 2
@@ -43,17 +52,6 @@ metadata/_edit_use_anchors_ = true
 [node name="XYCenter" type="Sprite2D" parent="Screen/Active"]
 z_index = 100
 position = Vector2(125, 387)
-texture = ExtResource("3_bj0be")
-
-[node name="XZScan" type="Panel" parent="Screen/Active"]
-offset_right = 250.0
-offset_bottom = 250.0
-theme_override_styles/panel = ExtResource("3_wh8w6")
-metadata/_edit_use_anchors_ = true
-
-[node name="XZCenter" type="Sprite2D" parent="Screen/Active"]
-z_index = 100
-position = Vector2(387, 387)
 texture = ExtResource("3_bj0be")
 
 [node name="ZYScan" type="Panel" parent="Screen/Active"]
@@ -74,7 +72,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="ZYCenter" type="Sprite2D" parent="Screen/Active"]
 z_index = 100
-position = Vector2(125, 125)
+position = Vector2(387, 387)
 texture = ExtResource("3_bj0be")
 
 [node name="References" type="Control" parent="Screen"]
@@ -128,7 +126,7 @@ texture = ExtResource("9_mxnll")
 texture = ExtResource("11_daio2")
 
 [node name="RollNeg" type="Sprite2D" parent="Screen/References"]
-texture = SubResource("CompressedTexture2D_ab462")
+texture = ExtResource("11_daio2")
 flip_h = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Screen"]
