@@ -12,7 +12,11 @@
 [ext_resource type="Texture2D" uid="uid://b1m5ixqx8nvvj" path="res://hardware/radar_panel/assets/rotate-ccw.png" id="11_daio2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_185hk"]
-albedo_color = Color(0.152941, 0.380392, 0.509804, 0.588235)
+transparency = 1
+albedo_color = Color(0.286174, 0.73631, 1, 0.313726)
+emission_enabled = true
+emission = Color(0, 0, 0.156863, 1)
+emission_energy_multiplier = 0.2
 
 [sub_resource type="QuadMesh" id="QuadMesh_yedgm"]
 
