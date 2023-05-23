@@ -27,6 +27,9 @@ environment = SubResource("Environment_s4uou")
 [node name="Vehicle" parent="." instance=ExtResource("1_a5bqa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 100)
 
+[node name="RadarAntena" parent="Vehicle/Hardware" index="1" node_paths=PackedStringArray("ship")]
+ship = NodePath("../../../Ship")
+
 [node name="Pillar" parent="." instance=ExtResource("2_3vxuu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, -128, -128)
 
@@ -62,3 +65,5 @@ ship = NodePath("../Ship")
 [connection signal="received_item" from="Ship" to="Vehicle" method="_on_ship_received_item"]
 [connection signal="win_game" from="Ship" to="LevelManager" method="_on_ship_win_game"]
 [connection signal="reset_level" from="DebrisSpawner" to="Vehicle" method="_on_debris_spawner_reset_level"]
+
+[editable path="Vehicle"]
