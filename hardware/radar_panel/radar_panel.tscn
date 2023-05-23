@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://b83qk7bj3abn"]
+[gd_scene load_steps=13 format=3 uid="uid://b83qk7bj3abn"]
 
 [ext_resource type="Script" path="res://hardware/radar_panel/radar_panel.gd" id="1_4tnm2"]
+[ext_resource type="Texture2D" uid="uid://d0xnnq2uf5u3d" path="res://hardware/radar_panel/assets/ship.png" id="3_23xym"]
 [ext_resource type="Texture2D" uid="uid://goxtvblbu1f2" path="res://hardware/radar_panel/assets/radar-center.png" id="3_bj0be"]
 [ext_resource type="StyleBox" uid="uid://dr0e5uu6j0akk" path="res://hardware/radar_panel/radar_background.tres" id="3_wh8w6"]
 [ext_resource type="Texture2D" uid="uid://gctmrua75bu4" path="res://hardware/radar_panel/assets/ping.png" id="5_y18qg"]
@@ -84,6 +85,10 @@ offset_bottom = 40.0
 
 [node name="RadarPing" type="Sprite2D" parent="Screen/References"]
 texture = ExtResource("5_y18qg")
+
+[node name="ShipPing" type="Sprite2D" parent="Screen/References"]
+z_index = 2
+texture = ExtResource("3_23xym")
 
 [node name="ThrustUp" type="Sprite2D" parent="Screen/References"]
 z_index = 10

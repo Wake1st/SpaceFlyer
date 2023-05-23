@@ -5,14 +5,15 @@ extends Node3D
 @export var scanningDistance = 10000
 @export var innerBorder = 6
 
-var ping:Sprite2D
+var debrisPing:Sprite2D
+var shipPing:Sprite2D
 var pingScale
 
 var XYWindow:Panel
 var XZWindow:Panel
 var ZYWindow:Panel
-
 var windowCenter:Vector2
+
 var xyFlip:Vector2 = Vector2(1,-1)
 var xzFlip:Vector2 = Vector2(1, 1)
 var zyFlip:Vector2 = Vector2(-1,-1)
@@ -56,7 +57,8 @@ func screen_to_device():
 
 
 func reference_capture():
-	ping = %Screen/References/RadarPing
+	debrisPing = %Screen/References/RadarPing
+	shipPing = %Screen/References/ShipPing
 	
 	XYWindow = %Screen/Active/XYScan
 	XZWindow = %Screen/Active/XZScan
@@ -156,13 +158,17 @@ func draw_motion(window:Panel, sprite:Sprite2D):
 
 func draw_items():
 	for coord in pingCoords:
-		draw_ping(XYWindow, coord.xy, xyFlip)
-		draw_ping(XZWindow, coord.xz, xzFlip)
-		draw_ping(ZYWindow, coord.zy, zyFlip)
+		if coord.type == RadarType.DEBRIS:
+			draw_ping(XYWindow, coord.xy, xyFlip, debrisPing.duplicate())
+			draw_ping(XZWindow, coord.xz, xzFlip, debrisPing.duplicate())
+			draw_ping(ZYWindow, coord.zy, zyFlip, debrisPing.duplicate())
+		elif coord.type == RadarType.SHIP:
+			draw_ping(XYWindow, coord.xy, xyFlip, shipPing.duplicate())
+			draw_ping(XZWindow, coord.xz, xzFlip, shipPing.duplicate())
+			draw_ping(ZYWindow, coord.zy, zyFlip, shipPing.duplicate())
 
 
-func draw_ping(window:Panel, pos:Vector2, flip:Vector2):
-	var p = ping.duplicate()
+func draw_ping(window:Panel, pos:Vector2, flip:Vector2, sprite:Sprite2D):
 	var t = Vector2(
 		flip.x * pos.x, 
 		flip.y * pos.y
@@ -179,8 +185,8 @@ func draw_ping(window:Panel, pos:Vector2, flip:Vector2):
 		window.size.y - innerBorder,
 	)
 	
-	p.position = Vector2(clampHorizontal, clampVertical)
-	window.add_child(p)
+	sprite.position = Vector2(clampHorizontal, clampVertical)
+	window.add_child(sprite)
 
 
 func _on_radar_antena_received_item_coords(coords:Array[RadarCoord]):
