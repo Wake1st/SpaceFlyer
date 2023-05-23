@@ -2,7 +2,7 @@ extends Node3D
 
 
 @export var controlsCapture:Node
-@export var scanningDistance = 1000
+@export var scanningDistance = 10000
 @export var innerBorder = 6
 
 var ping:Sprite2D
@@ -123,28 +123,28 @@ func draw_thrusts(dir:Vector3):
 
 func draw_rotations(rot:Vector3):
 	if rot.x > 0:
-		draw_motion(XYWindow,pitchPos)
-		draw_motion(XZWindow,pitchPos)
+		draw_motion(XZWindow,pitchNeg)
+		draw_motion(XYWindow,pitchNeg)
 		draw_motion(ZYWindow,rollPos)
 	if rot.x < 0:
-		draw_motion(XYWindow,pitchNeg)
-		draw_motion(XZWindow,pitchNeg)
+		draw_motion(XZWindow,pitchPos)
+		draw_motion(XYWindow,pitchPos)
 		draw_motion(ZYWindow,rollNeg)
 	if rot.y > 0:
-		draw_motion(XYWindow,yawPos)
 		draw_motion(XZWindow,rollPos)
+		draw_motion(XYWindow,yawPos)
 		draw_motion(ZYWindow,yawPos)
 	if rot.y < 0:
-		draw_motion(XYWindow,yawNeg)
 		draw_motion(XZWindow,rollNeg)
+		draw_motion(XYWindow,yawNeg)
 		draw_motion(ZYWindow,yawNeg)
 	if rot.z > 0:
+		draw_motion(XZWindow,yawPos)
 		draw_motion(XYWindow,rollPos)
-		draw_motion(XZWindow,yawNeg)
 		draw_motion(ZYWindow,pitchNeg)
 	if rot.z < 0:
+		draw_motion(XZWindow,yawNeg)
 		draw_motion(XYWindow,rollNeg)
-		draw_motion(XZWindow,yawPos)
 		draw_motion(ZYWindow,pitchPos)
 
 
