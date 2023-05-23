@@ -55,7 +55,6 @@ position = Vector2(125, 387)
 texture = ExtResource("3_bj0be")
 
 [node name="ZYScan" type="Panel" parent="Screen/Active"]
-layout_direction = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -87,45 +86,57 @@ offset_bottom = 40.0
 texture = ExtResource("5_y18qg")
 
 [node name="ThrustUp" type="Sprite2D" parent="Screen/References"]
+z_index = 10
 texture = ExtResource("6_36iww")
 
 [node name="ThrustTowards" type="Sprite2D" parent="Screen/References"]
+z_index = 10
 texture = ExtResource("7_r0umt")
 
 [node name="ThrustAway" type="Sprite2D" parent="Screen/References"]
+z_index = 10
 texture = ExtResource("8_u45e5")
 
 [node name="ThrustRight" type="Sprite2D" parent="Screen/References"]
+z_index = 10
 rotation = 1.5708
 texture = ExtResource("6_36iww")
 
 [node name="ThrustLeft" type="Sprite2D" parent="Screen/References"]
+z_index = 10
 rotation = -1.5708
 texture = ExtResource("6_36iww")
 
 [node name="ThrustDown" type="Sprite2D" parent="Screen/References"]
+z_index = 10
 texture = ExtResource("6_36iww")
 flip_v = true
 
 [node name="PitchPos" type="Sprite2D" parent="Screen/References"]
+z_index = 10
 texture = ExtResource("9_mxnll")
 flip_v = true
 
 [node name="PitchNeg" type="Sprite2D" parent="Screen/References"]
+z_index = 10
 texture = ExtResource("9_mxnll")
 
 [node name="YawPos" type="Sprite2D" parent="Screen/References"]
+z_index = 10
 rotation = -1.5708
 texture = ExtResource("9_mxnll")
 
 [node name="YawNeg" type="Sprite2D" parent="Screen/References"]
+z_index = 10
 rotation = 1.5708
 texture = ExtResource("9_mxnll")
 
 [node name="RollPos" type="Sprite2D" parent="Screen/References"]
+z_index = 10
 texture = ExtResource("11_daio2")
 
 [node name="RollNeg" type="Sprite2D" parent="Screen/References"]
+z_index = 10
 texture = ExtResource("11_daio2")
 flip_h = true
 

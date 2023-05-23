@@ -150,12 +150,8 @@ func draw_rotations(rot:Vector3):
 
 func draw_motion(window:Panel, sprite:Sprite2D):
 	var s = sprite.duplicate()
-	s.position = Vector2(
-		window.position.x + window.size.x/2,
-		window.position.y + window.size.y/2
-	)
+	s.position = Vector2(window.size.x/2, window.size.y/2)
 	window.add_child(s)
-	print("pos: ", window.get_child(window.get_child_count()-1).position)
 
 
 func draw_items():
