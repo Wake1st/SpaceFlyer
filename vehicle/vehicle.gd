@@ -35,6 +35,8 @@ func _integrate_forces(_state):
 		grab(controls)
 	
 	look_around(controls.lookDirection)
+	
+	%Hardware/RadarPanel.draw_radar(controls)
 
 
 func motion(controls:Controls):
