@@ -27,44 +27,29 @@ script = ExtResource("1_4tnm2")
 material_override = SubResource("StandardMaterial3D_185hk")
 mesh = SubResource("QuadMesh_yedgm")
 
-[node name="Control" type="Control" parent="."]
-visible = false
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="SubViewportContainer" type="SubViewportContainer" parent="Control"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 12.8
-anchor_bottom = 13.084
-offset_right = -472.0
-offset_bottom = -483.36
-
-[node name="Screen" type="SubViewport" parent="Control/SubViewportContainer"]
+[node name="Screen" type="SubViewport" parent="."]
 unique_name_in_owner = true
 handle_input_locally = false
-render_target_update_mode = 0
+render_target_update_mode = 4
 
-[node name="Active" type="Node2D" parent="Control/SubViewportContainer/Screen"]
+[node name="Active" type="Node2D" parent="Screen"]
 
-[node name="XZScan" type="Panel" parent="Control/SubViewportContainer/Screen/Active"]
+[node name="XZScan" type="Panel" parent="Screen/Active"]
 offset_right = 250.0
 offset_bottom = 250.0
 theme_override_styles/panel = ExtResource("3_wh8w6")
 metadata/_edit_use_anchors_ = true
 
-[node name="XZCenter" type="Sprite2D" parent="Control/SubViewportContainer/Screen/Active"]
+[node name="XZCenter" type="Sprite2D" parent="Screen/Active"]
 z_index = 100
 position = Vector2(125, 125)
 texture = ExtResource("3_bj0be")
 
-[node name="XZLabels" type="Node2D" parent="Control/SubViewportContainer/Screen/Active"]
+[node name="XZLabels" type="Node2D" parent="Screen/Active"]
 z_index = 10
 position = Vector2(125, 125)
 
-[node name="PosZ" type="RichTextLabel" parent="Control/SubViewportContainer/Screen/Active/XZLabels"]
+[node name="PosZ" type="RichTextLabel" parent="Screen/Active/XZLabels"]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -83,7 +68,7 @@ theme_override_font_sizes/normal_font_size = 20
 text = "FORWARD"
 fit_content = true
 
-[node name="NegZ" type="RichTextLabel" parent="Control/SubViewportContainer/Screen/Active/XZLabels"]
+[node name="NegZ" type="RichTextLabel" parent="Screen/Active/XZLabels"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -99,7 +84,7 @@ theme_override_font_sizes/normal_font_size = 20
 text = "BACKWARD"
 fit_content = true
 
-[node name="PosX" type="RichTextLabel" parent="Control/SubViewportContainer/Screen/Active/XZLabels"]
+[node name="PosX" type="RichTextLabel" parent="Screen/Active/XZLabels"]
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
@@ -115,7 +100,7 @@ theme_override_font_sizes/normal_font_size = 20
 text = "RIGHT"
 fit_content = true
 
-[node name="NegX" type="RichTextLabel" parent="Control/SubViewportContainer/Screen/Active/XZLabels"]
+[node name="NegX" type="RichTextLabel" parent="Screen/Active/XZLabels"]
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
@@ -134,7 +119,7 @@ theme_override_font_sizes/normal_font_size = 20
 text = "LEFT"
 fit_content = true
 
-[node name="XYScan" type="Panel" parent="Control/SubViewportContainer/Screen/Active"]
+[node name="XYScan" type="Panel" parent="Screen/Active"]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -145,16 +130,16 @@ grow_vertical = 0
 theme_override_styles/panel = ExtResource("3_wh8w6")
 metadata/_edit_use_anchors_ = true
 
-[node name="XYCenter" type="Sprite2D" parent="Control/SubViewportContainer/Screen/Active"]
+[node name="XYCenter" type="Sprite2D" parent="Screen/Active"]
 z_index = 100
 position = Vector2(125, 387)
 texture = ExtResource("3_bj0be")
 
-[node name="XYLabels" type="Node2D" parent="Control/SubViewportContainer/Screen/Active"]
+[node name="XYLabels" type="Node2D" parent="Screen/Active"]
 z_index = 10
 position = Vector2(125, 387)
 
-[node name="PosY" type="RichTextLabel" parent="Control/SubViewportContainer/Screen/Active/XYLabels"]
+[node name="PosY" type="RichTextLabel" parent="Screen/Active/XYLabels"]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -173,7 +158,7 @@ theme_override_font_sizes/normal_font_size = 20
 text = "UP"
 fit_content = true
 
-[node name="NegY" type="RichTextLabel" parent="Control/SubViewportContainer/Screen/Active/XYLabels"]
+[node name="NegY" type="RichTextLabel" parent="Screen/Active/XYLabels"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -189,7 +174,7 @@ theme_override_font_sizes/normal_font_size = 20
 text = "DOWN"
 fit_content = true
 
-[node name="PosX" type="RichTextLabel" parent="Control/SubViewportContainer/Screen/Active/XYLabels"]
+[node name="PosX" type="RichTextLabel" parent="Screen/Active/XYLabels"]
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
@@ -205,7 +190,7 @@ theme_override_font_sizes/normal_font_size = 20
 text = "RIGHT"
 fit_content = true
 
-[node name="NegX" type="RichTextLabel" parent="Control/SubViewportContainer/Screen/Active/XYLabels"]
+[node name="NegX" type="RichTextLabel" parent="Screen/Active/XYLabels"]
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
@@ -224,7 +209,7 @@ theme_override_font_sizes/normal_font_size = 20
 text = "LEFT"
 fit_content = true
 
-[node name="ZYScan" type="Panel" parent="Control/SubViewportContainer/Screen/Active"]
+[node name="ZYScan" type="Panel" parent="Screen/Active"]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -239,16 +224,16 @@ grow_vertical = 0
 theme_override_styles/panel = ExtResource("3_wh8w6")
 metadata/_edit_use_anchors_ = true
 
-[node name="ZYCenter" type="Sprite2D" parent="Control/SubViewportContainer/Screen/Active"]
+[node name="ZYCenter" type="Sprite2D" parent="Screen/Active"]
 z_index = 100
 position = Vector2(387, 387)
 texture = ExtResource("3_bj0be")
 
-[node name="ZYLabels" type="Node2D" parent="Control/SubViewportContainer/Screen/Active"]
+[node name="ZYLabels" type="Node2D" parent="Screen/Active"]
 z_index = 10
 position = Vector2(387, 387)
 
-[node name="PosY" type="RichTextLabel" parent="Control/SubViewportContainer/Screen/Active/ZYLabels"]
+[node name="PosY" type="RichTextLabel" parent="Screen/Active/ZYLabels"]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -267,7 +252,7 @@ theme_override_font_sizes/normal_font_size = 20
 text = "UP"
 fit_content = true
 
-[node name="NegY" type="RichTextLabel" parent="Control/SubViewportContainer/Screen/Active/ZYLabels"]
+[node name="NegY" type="RichTextLabel" parent="Screen/Active/ZYLabels"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -283,7 +268,7 @@ theme_override_font_sizes/normal_font_size = 20
 text = "DOWN"
 fit_content = true
 
-[node name="PosZ" type="RichTextLabel" parent="Control/SubViewportContainer/Screen/Active/ZYLabels"]
+[node name="PosZ" type="RichTextLabel" parent="Screen/Active/ZYLabels"]
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
@@ -299,7 +284,7 @@ theme_override_font_sizes/normal_font_size = 20
 text = "FORWARD"
 fit_content = true
 
-[node name="NegZ" type="RichTextLabel" parent="Control/SubViewportContainer/Screen/Active/ZYLabels"]
+[node name="NegZ" type="RichTextLabel" parent="Screen/Active/ZYLabels"]
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
@@ -318,7 +303,7 @@ theme_override_font_sizes/normal_font_size = 20
 text = "BACKWARD"
 fit_content = true
 
-[node name="References" type="Control" parent="Control/SubViewportContainer/Screen"]
+[node name="References" type="Control" parent="Screen"]
 visible = false
 custom_minimum_size = Vector2(10, 10)
 layout_mode = 3
@@ -326,66 +311,81 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="RadarPing" type="Sprite2D" parent="Control/SubViewportContainer/Screen/References"]
+[node name="RadarPing" type="Sprite2D" parent="Screen/References"]
 texture = ExtResource("5_y18qg")
 
-[node name="ShipPing" type="Sprite2D" parent="Control/SubViewportContainer/Screen/References"]
+[node name="ShipPing" type="Sprite2D" parent="Screen/References"]
 z_index = 2
 texture = ExtResource("3_23xym")
 
-[node name="ThrustUp" type="Sprite2D" parent="Control/SubViewportContainer/Screen/References"]
+[node name="ThrustUp" type="Sprite2D" parent="Screen/References"]
 z_index = 10
 texture = ExtResource("6_36iww")
 
-[node name="ThrustTowards" type="Sprite2D" parent="Control/SubViewportContainer/Screen/References"]
+[node name="ThrustTowards" type="Sprite2D" parent="Screen/References"]
 z_index = 10
 texture = ExtResource("7_r0umt")
 
-[node name="ThrustAway" type="Sprite2D" parent="Control/SubViewportContainer/Screen/References"]
+[node name="ThrustAway" type="Sprite2D" parent="Screen/References"]
 z_index = 10
 texture = ExtResource("8_u45e5")
 
-[node name="ThrustRight" type="Sprite2D" parent="Control/SubViewportContainer/Screen/References"]
+[node name="ThrustRight" type="Sprite2D" parent="Screen/References"]
 z_index = 10
 rotation = 1.5708
 texture = ExtResource("6_36iww")
 
-[node name="ThrustLeft" type="Sprite2D" parent="Control/SubViewportContainer/Screen/References"]
+[node name="ThrustLeft" type="Sprite2D" parent="Screen/References"]
 z_index = 10
 rotation = -1.5708
 texture = ExtResource("6_36iww")
 
-[node name="ThrustDown" type="Sprite2D" parent="Control/SubViewportContainer/Screen/References"]
+[node name="ThrustDown" type="Sprite2D" parent="Screen/References"]
 z_index = 10
 texture = ExtResource("6_36iww")
 flip_v = true
 
-[node name="PitchPos" type="Sprite2D" parent="Control/SubViewportContainer/Screen/References"]
+[node name="PitchPos" type="Sprite2D" parent="Screen/References"]
 z_index = 10
 texture = ExtResource("9_mxnll")
 flip_v = true
 
-[node name="PitchNeg" type="Sprite2D" parent="Control/SubViewportContainer/Screen/References"]
+[node name="PitchNeg" type="Sprite2D" parent="Screen/References"]
 z_index = 10
 texture = ExtResource("9_mxnll")
 
-[node name="YawPos" type="Sprite2D" parent="Control/SubViewportContainer/Screen/References"]
+[node name="YawPos" type="Sprite2D" parent="Screen/References"]
 z_index = 10
 rotation = -1.5708
 texture = ExtResource("9_mxnll")
 
-[node name="YawNeg" type="Sprite2D" parent="Control/SubViewportContainer/Screen/References"]
+[node name="YawNeg" type="Sprite2D" parent="Screen/References"]
 z_index = 10
 rotation = 1.5708
 texture = ExtResource("9_mxnll")
 
-[node name="RollPos" type="Sprite2D" parent="Control/SubViewportContainer/Screen/References"]
+[node name="RollPos" type="Sprite2D" parent="Screen/References"]
 z_index = 10
 texture = ExtResource("11_daio2")
 
-[node name="RollNeg" type="Sprite2D" parent="Control/SubViewportContainer/Screen/References"]
+[node name="RollNeg" type="Sprite2D" parent="Screen/References"]
 z_index = 10
 texture = ExtResource("11_daio2")
 flip_h = true
 
-[node name="CanvasLayer" type="CanvasLayer" parent="Control/SubViewportContainer/Screen"]
+[node name="CanvasLayer" type="CanvasLayer" parent="Screen"]
+
+[node name="EditorNode" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="EditorNode"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 12.8
+anchor_bottom = 13.084
+offset_right = -472.0
+offset_bottom = -483.36

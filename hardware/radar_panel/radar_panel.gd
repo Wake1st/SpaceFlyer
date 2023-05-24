@@ -36,6 +36,8 @@ var pingCoords:Array[RadarCoord]
 
 
 func _ready():
+	$EditorNode.visible = false
+	
 	screen_to_device()
 	reference_capture()
 	
