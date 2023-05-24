@@ -29,6 +29,8 @@ mesh = SubResource("QuadMesh_yedgm")
 
 [node name="Screen" type="SubViewport" parent="."]
 unique_name_in_owner = true
+handle_input_locally = false
+render_target_update_mode = 4
 
 [node name="Active" type="Node2D" parent="Screen"]
 
@@ -42,6 +44,80 @@ metadata/_edit_use_anchors_ = true
 z_index = 100
 position = Vector2(125, 125)
 texture = ExtResource("3_bj0be")
+
+[node name="XZLabels" type="Node2D" parent="Screen/Active"]
+z_index = 10
+position = Vector2(125, 125)
+
+[node name="PosZ" type="RichTextLabel" parent="Screen/Active/XZLabels"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -130.0
+offset_right = 50.0
+offset_bottom = -46.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 20
+text = "FORWARD"
+fit_content = true
+
+[node name="NegZ" type="RichTextLabel" parent="Screen/Active/XZLabels"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -57.5
+offset_top = 100.0
+offset_right = 57.5
+offset_bottom = 156.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 20
+text = "BACKWARD"
+fit_content = true
+
+[node name="PosX" type="RichTextLabel" parent="Screen/Active/XZLabels"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 110.0
+offset_top = -70.0
+offset_right = 128.0
+offset_bottom = 70.0
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 20
+text = "RIGHT"
+fit_content = true
+
+[node name="NegX" type="RichTextLabel" parent="Screen/Active/XZLabels"]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -123.0
+offset_top = -56.0
+offset_right = -105.0
+offset_bottom = 56.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 20
+text = "LEFT"
+fit_content = true
 
 [node name="XYScan" type="Panel" parent="Screen/Active"]
 anchors_preset = 2
@@ -58,6 +134,80 @@ metadata/_edit_use_anchors_ = true
 z_index = 100
 position = Vector2(125, 387)
 texture = ExtResource("3_bj0be")
+
+[node name="XYLabels" type="Node2D" parent="Screen/Active"]
+z_index = 10
+position = Vector2(125, 387)
+
+[node name="PosY" type="RichTextLabel" parent="Screen/Active/XYLabels"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -15.0
+offset_top = -130.0
+offset_right = 15.0
+offset_bottom = -46.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 20
+text = "UP"
+fit_content = true
+
+[node name="NegY" type="RichTextLabel" parent="Screen/Active/XYLabels"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -33.0
+offset_top = 100.0
+offset_right = 33.0
+offset_bottom = 156.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 20
+text = "DOWN"
+fit_content = true
+
+[node name="PosX" type="RichTextLabel" parent="Screen/Active/XYLabels"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 110.0
+offset_top = -70.0
+offset_right = 128.0
+offset_bottom = 70.0
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 20
+text = "RIGHT"
+fit_content = true
+
+[node name="NegX" type="RichTextLabel" parent="Screen/Active/XYLabels"]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -123.0
+offset_top = -56.0
+offset_right = -105.0
+offset_bottom = 56.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 20
+text = "LEFT"
+fit_content = true
 
 [node name="ZYScan" type="Panel" parent="Screen/Active"]
 anchors_preset = 3
@@ -78,6 +228,80 @@ metadata/_edit_use_anchors_ = true
 z_index = 100
 position = Vector2(387, 387)
 texture = ExtResource("3_bj0be")
+
+[node name="ZYLabels" type="Node2D" parent="Screen/Active"]
+z_index = 10
+position = Vector2(387, 387)
+
+[node name="PosY" type="RichTextLabel" parent="Screen/Active/ZYLabels"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -15.0
+offset_top = -130.0
+offset_right = 15.0
+offset_bottom = -46.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 20
+text = "UP"
+fit_content = true
+
+[node name="NegY" type="RichTextLabel" parent="Screen/Active/ZYLabels"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -33.0
+offset_top = 100.0
+offset_right = 33.0
+offset_bottom = 156.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 20
+text = "DOWN"
+fit_content = true
+
+[node name="PosZ" type="RichTextLabel" parent="Screen/Active/ZYLabels"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 110.0
+offset_top = -70.0
+offset_right = 128.0
+offset_bottom = 70.0
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 20
+text = "FORWARD"
+fit_content = true
+
+[node name="NegZ" type="RichTextLabel" parent="Screen/Active/ZYLabels"]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -123.0
+offset_top = -56.0
+offset_right = -105.0
+offset_bottom = 56.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 20
+text = "BACKWARD"
+fit_content = true
 
 [node name="References" type="Control" parent="Screen"]
 visible = false
@@ -150,3 +374,18 @@ texture = ExtResource("11_daio2")
 flip_h = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Screen"]
+
+[node name="EditorNode" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="EditorNode"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 12.8
+anchor_bottom = 13.084
+offset_right = -472.0
+offset_bottom = -483.36
