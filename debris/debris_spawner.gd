@@ -22,7 +22,7 @@ func _physics_process(_delta):
 	if (Input.is_action_just_pressed("reset_level")):
 		SetupLevel()
 	
-	if firstPass:	
+	if firstPass:
 		StartLevel()
 		emit_signal("reset_level", items)
 

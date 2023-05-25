@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://bh01hs6801nnm"]
+[gd_scene load_steps=11 format=3 uid="uid://bh01hs6801nnm"]
 
 [ext_resource type="PackedScene" uid="uid://bkldao0ffqktn" path="res://vehicle/vehicle.tscn" id="1_a5bqa"]
 [ext_resource type="Texture2D" uid="uid://dcci1dwegwpld" path="res://level/milkyway_2020_4k.jpg" id="1_b7gdk"]
 [ext_resource type="PackedScene" uid="uid://3o8km61mbd66" path="res://pillar.tscn" id="2_3vxuu"]
-[ext_resource type="PackedScene" path="res://ship/ship.tscn" id="4_vr5mi"]
+[ext_resource type="PackedScene" uid="uid://dnx53jtwpotf0" path="res://vehicle/vehicle_spawner.tscn" id="3_tima7"]
+[ext_resource type="PackedScene" uid="uid://cgqlt4bsxymcr" path="res://ship/ship.tscn" id="4_vr5mi"]
 [ext_resource type="Script" path="res://level/LevelManager.gd" id="5_2gvga"]
 [ext_resource type="PackedScene" uid="uid://ewko4ftdsxw1" path="res://debris/debris_spawner.tscn" id="6_48pw5"]
 
@@ -21,14 +22,25 @@ ambient_light_color = Color(0.847059, 0.619608, 0.807843, 1)
 
 [node name="Space" type="Node3D"]
 
+[node name="LevelManager" type="Node" parent="." node_paths=PackedStringArray("ship")]
+script = ExtResource("5_2gvga")
+ship = NodePath("../Ship")
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_s4uou")
+
+[node name="VehicleSpawner" parent="." node_paths=PackedStringArray("vehicle") instance=ExtResource("3_tima7")]
+vehicle = NodePath("../Vehicle")
 
 [node name="Vehicle" parent="." instance=ExtResource("1_a5bqa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 100)
 
 [node name="RadarAntena" parent="Vehicle/Hardware" index="1" node_paths=PackedStringArray("ship")]
 ship = NodePath("../../../Ship")
+
+[node name="Ship" parent="." instance=ExtResource("4_vr5mi")]
+
+[node name="DebrisSpawner" parent="." instance=ExtResource("6_48pw5")]
 
 [node name="Pillar" parent="." instance=ExtResource("2_3vxuu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, -128, -128)
@@ -54,16 +66,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 128, 128)
 [node name="Pillar8" parent="." instance=ExtResource("2_3vxuu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 128, 128)
 
-[node name="Ship" parent="." instance=ExtResource("4_vr5mi")]
-
-[node name="DebrisSpawner" parent="." instance=ExtResource("6_48pw5")]
-
-[node name="LevelManager" type="Node" parent="." node_paths=PackedStringArray("ship")]
-script = ExtResource("5_2gvga")
-ship = NodePath("../Ship")
-
 [connection signal="received_item" from="Ship" to="Vehicle" method="_on_ship_received_item"]
 [connection signal="win_game" from="Ship" to="LevelManager" method="_on_ship_win_game"]
+[connection signal="reset_level" from="DebrisSpawner" to="VehicleSpawner" method="_on_debris_spawner_reset_level"]
 [connection signal="reset_level" from="DebrisSpawner" to="Vehicle" method="_on_debris_spawner_reset_level"]
 
 [editable path="Vehicle"]

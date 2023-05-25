@@ -63,11 +63,17 @@ func motion(controls:Controls):
 		apply_torque(global_transform.basis * controls.rotation * rotationSpeed)
 
 
-func move(destination:Transform3D):
+func move(destination:Transform3D, isDocked:bool=false):
 	linear_velocity = Vector3.ZERO
 	angular_velocity = Vector3.ZERO
 	transform = destination
-	docked = true
+	docked = isDocked
+
+
+func push(dir:Vector3, rot:Vector3):
+	print(dir, rot)
+	apply_impulse(dir)
+	apply_torque(rot)
 
 
 func grab(controls:Controls):
