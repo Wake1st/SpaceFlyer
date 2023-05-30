@@ -100,6 +100,10 @@ func grab(controls:Controls):
 				grabbing = true
 				grabbable = grabbableBody.get_child(1)
 				
+				if grabbableBody.hardware:
+					%Hardware/RadarAntena.disabled = false
+					
+				
 				if (grabbable.get_parent()):
 					grabbable.get_parent().remove_child(grabbable)
 				$GrabArea/HoldPoint.add_child(grabbable)

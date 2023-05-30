@@ -8,6 +8,8 @@ var items:Array[RigidBody3D] = []
 var coords:Array[RadarCoord] = []
 @export var ship:Node3D
 
+var disabled = true
+
 
 func reset_items(i:Array[RigidBody3D]):
 	items = i
@@ -24,6 +26,9 @@ func remove_item(i:RigidBody3D):
 
 
 func _physics_process(_delta):
+	if disabled:
+		return
+	
 	coords.clear()
 	
 	for item in items:
