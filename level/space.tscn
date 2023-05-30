@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bh01hs6801nnm"]
+[gd_scene load_steps=13 format=3 uid="uid://bh01hs6801nnm"]
 
 [ext_resource type="PackedScene" uid="uid://bkldao0ffqktn" path="res://vehicle/vehicle.tscn" id="1_a5bqa"]
 [ext_resource type="Texture2D" uid="uid://dcci1dwegwpld" path="res://level/milkyway_2020_4k.jpg" id="1_b7gdk"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://cgqlt4bsxymcr" path="res://ship/ship.tscn" id="4_vr5mi"]
 [ext_resource type="Script" path="res://level/LevelManager.gd" id="5_2gvga"]
 [ext_resource type="PackedScene" uid="uid://ewko4ftdsxw1" path="res://debris/debris_spawner.tscn" id="6_48pw5"]
+[ext_resource type="PackedScene" uid="uid://bj1vt1e1nt6of" path="res://debris/debris.tscn" id="7_xejm3"]
+[ext_resource type="PackedScene" uid="uid://djrm7fli24150" path="res://hardware/radar_antena/radar_antena.tscn" id="8_31dx6"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_c3qym"]
 panorama = ExtResource("1_b7gdk")
@@ -41,6 +43,9 @@ ship = NodePath("../../../Ship")
 [node name="Ship" parent="." instance=ExtResource("4_vr5mi")]
 
 [node name="DebrisSpawner" parent="." instance=ExtResource("6_48pw5")]
+
+[node name="radar_antena_container" parent="DebrisSpawner" instance=ExtResource("7_xejm3")]
+hardware = ExtResource("8_31dx6")
 
 [node name="Pillar" parent="." instance=ExtResource("2_3vxuu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, -128, -128)

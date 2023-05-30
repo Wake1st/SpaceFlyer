@@ -71,7 +71,6 @@ func move(destination:Transform3D, isDocked:bool=false):
 
 
 func push(dir:Vector3, rot:Vector3):
-	print(dir, rot)
 	apply_impulse(dir)
 	apply_torque(rot)
 
