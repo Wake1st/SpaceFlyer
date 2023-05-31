@@ -191,5 +191,5 @@ func draw_ping(window:Panel, pos:Vector2, flip:Vector2, sprite:Sprite2D):
 	window.add_child(sprite)
 
 
-func _on_radar_antena_received_item_coords(coords:Array[RadarCoord]):
+func pass_coords(coords:Array[RadarCoord]):
 	pingCoords = coords

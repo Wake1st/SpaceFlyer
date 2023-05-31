@@ -153,8 +153,8 @@ func print_info(controls:Controls):
 
 
 func _on_debris_spawner_reset_level(items:Array[RigidBody3D]):
-	%Hardware/RadarAntena.reset_items(items)
+	%Hardware.reset_radar_items(items)
 
 
 func _on_ship_received_item(body):
-	$Hardware/RadarAntena.remove_item(body)
+	%Hardware.remove_radar_item(body)

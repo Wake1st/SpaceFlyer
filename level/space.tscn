@@ -77,3 +77,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 128, 128)
 [connection signal="reset_level" from="DebrisSpawner" to="Vehicle" method="_on_debris_spawner_reset_level"]
 
 [editable path="Vehicle"]
+[editable path="Vehicle/Hardware"]

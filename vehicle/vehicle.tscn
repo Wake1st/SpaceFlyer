@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://bkldao0ffqktn"]
+[gd_scene load_steps=10 format=3 uid="uid://bkldao0ffqktn"]
 
 [ext_resource type="Script" path="res://vehicle/vehicle.gd" id="1_2rruh"]
 [ext_resource type="PackedScene" uid="uid://ls3ccth5saox" path="res://vehicle/space_coffin.glb" id="2_gmysa"]
 [ext_resource type="Script" path="res://vehicle/Controls.gd" id="3_e0mtw"]
 [ext_resource type="PackedScene" uid="uid://dny1y411bhhii" path="res://ui/hud.tscn" id="3_teojl"]
-[ext_resource type="PackedScene" uid="uid://b83qk7bj3abn" path="res://hardware/radar_panel/radar_panel.tscn" id="6_71dma"]
-[ext_resource type="PackedScene" uid="uid://djrm7fli24150" path="res://hardware/radar_antena/radar_antena.tscn" id="6_wi107"]
+[ext_resource type="PackedScene" uid="uid://dyt0q8t777776" path="res://hardware/hardware.tscn" id="5_so52y"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g6iso"]
 size = Vector3(2, 4, 1.2)
@@ -81,16 +80,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 [node name="Right" type="RayCast3D" parent="LookDirections"]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0.9, 0)
 
-[node name="Hardware" type="Node3D" parent="."]
+[node name="Hardware" parent="." instance=ExtResource("5_so52y")]
 unique_name_in_owner = true
-
-[node name="RadarPanel" parent="Hardware" node_paths=PackedStringArray("controlsCapture") instance=ExtResource("6_71dma")]
-transform = Transform3D(0.565685, 0, -0.565685, 0, 0.8, 0, 0.565685, 0, 0.565685, 0.7, 0.9, -0.4)
-controlsCapture = NodePath("../../Controls")
-
-[node name="RadarAntena" parent="Hardware" instance=ExtResource("6_wi107")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
 [connection signal="body_entered" from="GrabArea" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="GrabArea" to="." method="_on_area_3d_body_exited"]
-[connection signal="received_item_coords" from="Hardware/RadarAntena" to="Hardware/RadarPanel" method="_on_radar_antena_received_item_coords"]
