@@ -5,15 +5,14 @@ signal reset_level(i:Array[RigidBody3D])
 
 
 @export var itemCount:float = 1.0
+var items:Array[RigidBody3D]	# use editor once v4.1 is available
 
-var deb
-
-var items:Array[RigidBody3D] = []
 var firstPass:bool = true
 
 
 func _ready():
-	deb = preload("res://debris/debris.tscn")
+	for child in get_children():
+		items.append(child)
 	
 	SetupLevel()
 
@@ -29,15 +28,6 @@ func _physics_process(_delta):
 
 func SetupLevel():
 	firstPass = true
-	items.clear()
-	var children = get_children()
-	for child in children:
-		remove_child(child)
-	
-	for i in itemCount:
-		var item = deb.instantiate()
-		add_child(item)
-		items.append(item)
 	
 	for i in items.size():
 		items[i].transform.origin = Vector3(

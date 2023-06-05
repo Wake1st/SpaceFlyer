@@ -71,7 +71,6 @@ func move(destination:Transform3D, isDocked:bool=false):
 
 
 func push(dir:Vector3, rot:Vector3):
-	print(dir, rot)
 	apply_impulse(dir)
 	apply_torque(rot)
 
@@ -100,6 +99,10 @@ func grab(controls:Controls):
 			if grabbableBody:
 				grabbing = true
 				grabbable = grabbableBody.get_child(1)
+				
+				if grabbableBody.hardware:
+					%Hardware/RadarAntena.disabled = false
+					
 				
 				if (grabbable.get_parent()):
 					grabbable.get_parent().remove_child(grabbable)
@@ -150,8 +153,8 @@ func print_info(controls:Controls):
 
 
 func _on_debris_spawner_reset_level(items:Array[RigidBody3D]):
-	%Hardware/RadarAntena.reset_items(items)
+	%Hardware.reset_radar_items(items)
 
 
 func _on_ship_received_item(body):
-	$Hardware/RadarAntena.remove_item(body)
+	%Hardware.remove_radar_item(body)

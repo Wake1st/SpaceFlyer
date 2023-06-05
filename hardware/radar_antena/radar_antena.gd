@@ -1,12 +1,15 @@
 extends Node3D
 
 
-signal received_item_coords(coords:Array[RadarCoord])
+@export var hardwarePort:Node3D
 
 
 var items:Array[RigidBody3D] = []
 var coords:Array[RadarCoord] = []
 @export var ship:Node3D
+
+
+var disabled = true
 
 
 func reset_items(i:Array[RigidBody3D]):
@@ -24,6 +27,9 @@ func remove_item(i:RigidBody3D):
 
 
 func _physics_process(_delta):
+	if disabled:
+		return
+	
 	coords.clear()
 	
 	for item in items:
@@ -39,7 +45,7 @@ func _physics_process(_delta):
 	shipCoord.type = RadarType.SHIP
 	coords.push_back(shipCoord)
 	
-	emit_signal("received_item_coords", coords)
+	hardwarePort.received_item_coords(coords)
 
 
 func get_coords(item:Node3D):
