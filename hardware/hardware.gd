@@ -6,7 +6,7 @@ var radarAntena:Node3D
 
 
 func _ready():
-	radarPanel = get_child(0)a
+	radarPanel = get_child(0)
 	radarAntena = get_child(1)
 
 
