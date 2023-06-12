@@ -1,12 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://cgqlt4bsxymcr"]
+[gd_scene load_steps=9 format=3 uid="uid://cgqlt4bsxymcr"]
 
 [ext_resource type="Script" path="res://ship/ship.gd" id="1_18bpn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iggkc"]
-albedo_color = Color(0.368627, 0, 0.0470588, 1)
+albedo_color = Color(1, 0.231373, 0.278431, 1)
 metallic = 0.2
-metallic_specular = 0.6
-roughness = 0.65
+metallic_specular = 0.8
+roughness = 0.4
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_m6y3n"]
 material = SubResource("StandardMaterial3D_iggkc")
@@ -27,6 +27,18 @@ material = SubResource("StandardMaterial3D_b32kp")
 top_radius = 10.0
 bottom_radius = 10.0
 height = 10.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ibo8w"]
+albedo_color = Color(1, 0, 0, 1)
+roughness = 0.2
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+emission_energy_multiplier = 40.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_1buj0"]
+material = SubResource("StandardMaterial3D_ibo8w")
+radius = 0.2
+height = 1.0
 
 [node name="Ship" type="Node3D"]
 script = ExtResource("1_18bpn")
@@ -52,5 +64,103 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -21
 collide_with_bodies = false
 debug_shape_custom_color = Color(0.839216, 0.996078, 0.866667, 1)
 debug_shape_thickness = 5
+
+[node name="Beacon" type="Node3D" parent="."]
+
+[node name="TopLight" type="Node3D" parent="Beacon"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 45, 0)
+
+[node name="Bulb" type="MeshInstance3D" parent="Beacon/TopLight"]
+mesh = SubResource("CapsuleMesh_1buj0")
+skeleton = NodePath("../..")
+
+[node name="Light" type="SpotLight3D" parent="Beacon/TopLight"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+light_color = Color(1, 0, 0, 1)
+light_energy = 100.0
+light_indirect_energy = 12.0
+light_volumetric_fog_energy = 0.0
+spot_range = 1000.0
+spot_angle = 180.0
+
+[node name="BottomLight" type="Node3D" parent="Beacon"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -45, 0)
+
+[node name="Bulb" type="MeshInstance3D" parent="Beacon/BottomLight"]
+mesh = SubResource("CapsuleMesh_1buj0")
+skeleton = NodePath("../..")
+
+[node name="Light" type="SpotLight3D" parent="Beacon/BottomLight"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+light_color = Color(1, 0, 0, 1)
+light_energy = 100.0
+light_indirect_energy = 12.0
+light_volumetric_fog_energy = 0.0
+spot_range = 1000.0
+spot_angle = 180.0
+
+[node name="FrontLight" type="Node3D" parent="Beacon"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 45, 0, 0)
+
+[node name="Bulb" type="MeshInstance3D" parent="Beacon/FrontLight"]
+mesh = SubResource("CapsuleMesh_1buj0")
+skeleton = NodePath("../..")
+
+[node name="Light" type="SpotLight3D" parent="Beacon/FrontLight"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+light_color = Color(1, 0, 0, 1)
+light_energy = 100.0
+light_indirect_energy = 12.0
+light_volumetric_fog_energy = 0.0
+spot_range = 1000.0
+spot_angle = 180.0
+
+[node name="BackLight" type="Node3D" parent="Beacon"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -45, 0, 0)
+
+[node name="Bulb" type="MeshInstance3D" parent="Beacon/BackLight"]
+mesh = SubResource("CapsuleMesh_1buj0")
+skeleton = NodePath("../..")
+
+[node name="Light" type="SpotLight3D" parent="Beacon/BackLight"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+light_color = Color(1, 0, 0, 1)
+light_energy = 100.0
+light_indirect_energy = 12.0
+light_volumetric_fog_energy = 0.0
+spot_range = 1000.0
+spot_angle = 180.0
+
+[node name="RightLight" type="Node3D" parent="Beacon"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 45)
+
+[node name="Bulb" type="MeshInstance3D" parent="Beacon/RightLight"]
+mesh = SubResource("CapsuleMesh_1buj0")
+skeleton = NodePath("../..")
+
+[node name="Light" type="SpotLight3D" parent="Beacon/RightLight"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+light_color = Color(1, 0, 0, 1)
+light_energy = 100.0
+light_indirect_energy = 12.0
+light_volumetric_fog_energy = 0.0
+spot_range = 1000.0
+spot_angle = 180.0
+
+[node name="LeftLight" type="Node3D" parent="Beacon"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -45)
+
+[node name="Bulb" type="MeshInstance3D" parent="Beacon/LeftLight"]
+mesh = SubResource("CapsuleMesh_1buj0")
+skeleton = NodePath("../..")
+
+[node name="Light" type="SpotLight3D" parent="Beacon/LeftLight"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+light_color = Color(1, 0, 0, 1)
+light_energy = 100.0
+light_indirect_energy = 12.0
+light_volumetric_fog_energy = 0.0
+spot_range = 1000.0
+spot_angle = 180.0
 
 [connection signal="body_entered" from="CollectionArea" to="." method="_on_collection_area_body_entered"]

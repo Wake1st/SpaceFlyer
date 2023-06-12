@@ -15,8 +15,8 @@
 transparency = 1
 albedo_color = Color(0.286174, 0.73631, 1, 0.313726)
 emission_enabled = true
-emission = Color(0, 0, 0.156863, 1)
-emission_energy_multiplier = 0.2
+emission = Color(0.00784314, 0, 0.14902, 1)
+emission_energy_multiplier = 0.1
 
 [sub_resource type="QuadMesh" id="QuadMesh_yedgm"]
 

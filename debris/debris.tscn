@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" path="res://debris/debris.gd" id="1_0kpeu"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_wcvg6"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eqx3p"]
 albedo_color = Color(0.14902, 0.52549, 0.403922, 1)
 metallic = 0.4
@@ -9,8 +11,6 @@ roughness = 0.4
 
 [sub_resource type="BoxMesh" id="BoxMesh_xk2p0"]
 material = SubResource("StandardMaterial3D_eqx3p")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_wcvg6"]
 
 [node name="debris" type="RigidBody3D"]
 collision_layer = 3
@@ -20,11 +20,11 @@ linear_damp_mode = 1
 angular_damp_mode = 1
 script = ExtResource("1_0kpeu")
 
-[node name="Mesh" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_xk2p0")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_wcvg6")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_xk2p0")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
