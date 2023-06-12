@@ -1,8 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://cgqlt4bsxymcr"]
+[gd_scene load_steps=7 format=3 uid="uid://cgqlt4bsxymcr"]
 
 [ext_resource type="Script" path="res://ship/ship.gd" id="1_18bpn"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iggkc"]
+albedo_color = Color(0.368627, 0, 0.0470588, 1)
+metallic = 0.2
+metallic_specular = 0.6
+roughness = 0.65
+
 [sub_resource type="CylinderMesh" id="CylinderMesh_m6y3n"]
+material = SubResource("StandardMaterial3D_iggkc")
 top_radius = 8.0
 bottom_radius = 10.0
 height = 40.0
