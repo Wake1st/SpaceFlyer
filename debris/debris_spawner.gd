@@ -4,6 +4,11 @@ extends Node3D
 signal reset_level(i:Array[RigidBody3D])
 
 
+@export var minImpulse:float = 2
+@export var maxImpulse:float = 4
+@export var minTorque:Vector3 = Vector3(-40,-40,-40)
+@export var maxTorque:Vector3 = Vector3(40,40,40)
+
 @export var itemCount:float = 1.0
 var items:Array[RigidBody3D]	# use editor once v4.1 is available
 
@@ -41,12 +46,15 @@ func StartLevel():
 	firstPass = false
 	for i in items.size():
 		items[i].apply_impulse(
-			items[i].transform.origin.normalized() * randf_range(4,10)
+			items[i].transform.origin.normalized() * randf_range(
+				minImpulse,
+				maxImpulse
+			)
 		)
 		items[i].apply_torque(
 			Vector3(
-				randf_range(-40,40),
-				randf_range(-40,40),
-				randf_range(-40,40)
+				randf_range(minTorque.x,maxTorque.x),
+				randf_range(-minTorque.y,maxTorque.y),
+				randf_range(-minTorque.z,maxTorque.z)
 			)
 		)

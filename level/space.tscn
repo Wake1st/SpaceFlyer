@@ -1,8 +1,8 @@
 [gd_scene load_steps=13 format=3 uid="uid://bh01hs6801nnm"]
 
 [ext_resource type="PackedScene" uid="uid://bkldao0ffqktn" path="res://vehicle/vehicle.tscn" id="1_a5bqa"]
-[ext_resource type="Texture2D" uid="uid://dcci1dwegwpld" path="res://level/milkyway_2020_4k.jpg" id="1_b7gdk"]
 [ext_resource type="PackedScene" uid="uid://3o8km61mbd66" path="res://pillar.tscn" id="2_3vxuu"]
+[ext_resource type="Texture2D" uid="uid://b0xft2y2s5a6f" path="res://level/TychoSkymap.jpg" id="2_5cf4r"]
 [ext_resource type="PackedScene" uid="uid://dnx53jtwpotf0" path="res://vehicle/vehicle_spawner.tscn" id="3_tima7"]
 [ext_resource type="PackedScene" uid="uid://cgqlt4bsxymcr" path="res://ship/ship.tscn" id="4_vr5mi"]
 [ext_resource type="Script" path="res://level/LevelManager.gd" id="5_2gvga"]
@@ -11,16 +11,18 @@
 [ext_resource type="PackedScene" uid="uid://djrm7fli24150" path="res://hardware/radar_antena/radar_antena.tscn" id="8_31dx6"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_c3qym"]
-panorama = ExtResource("1_b7gdk")
+panorama = ExtResource("2_5cf4r")
 
 [sub_resource type="Sky" id="Sky_n050w"]
 sky_material = SubResource("PanoramaSkyMaterial_c3qym")
 
 [sub_resource type="Environment" id="Environment_s4uou"]
 background_mode = 2
+background_energy_multiplier = 0.2
 sky = SubResource("Sky_n050w")
-ambient_light_source = 2
+ambient_light_source = 1
 ambient_light_color = Color(0.847059, 0.619608, 0.807843, 1)
+ambient_light_energy = 0.0
 
 [node name="Space" type="Node3D"]
 
@@ -49,27 +51,35 @@ hardware = ExtResource("8_31dx6")
 
 [node name="Pillar" parent="." instance=ExtResource("2_3vxuu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, -128, -128)
+visible = false
 
 [node name="Pillar2" parent="." instance=ExtResource("2_3vxuu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, -128, -128)
+visible = false
 
 [node name="Pillar3" parent="." instance=ExtResource("2_3vxuu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, -128, 128)
+visible = false
 
 [node name="Pillar4" parent="." instance=ExtResource("2_3vxuu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, -128, 128)
+visible = false
 
 [node name="Pillar5" parent="." instance=ExtResource("2_3vxuu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 128, -128)
+visible = false
 
 [node name="Pillar6" parent="." instance=ExtResource("2_3vxuu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 128, -128)
+visible = false
 
 [node name="Pillar7" parent="." instance=ExtResource("2_3vxuu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 128, 128)
+visible = false
 
 [node name="Pillar8" parent="." instance=ExtResource("2_3vxuu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 128, 128)
+visible = false
 
 [connection signal="received_item" from="Ship" to="Vehicle" method="_on_ship_received_item"]
 [connection signal="win_game" from="Ship" to="LevelManager" method="_on_ship_win_game"]
