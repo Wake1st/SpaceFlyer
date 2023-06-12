@@ -33,6 +33,7 @@ var yawPos:Sprite2D
 var yawNeg:Sprite2D
 
 var pingCoords:Array[RadarCoord]
+var connected:bool = false
 
 
 func _ready():

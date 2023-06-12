@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dyt0q8t777776"]
+[gd_scene load_steps=3 format=3 uid="uid://dyt0q8t777776"]
 
 [ext_resource type="Script" path="res://hardware/hardware.gd" id="1_1461f"]
 [ext_resource type="PackedScene" uid="uid://b83qk7bj3abn" path="res://hardware/radar_panel/radar_panel.tscn" id="1_qfqks"]
-[ext_resource type="PackedScene" uid="uid://djrm7fli24150" path="res://hardware/radar_antena/radar_antena.tscn" id="2_hlmel"]
 
 [node name="Hardware" type="Node3D"]
 script = ExtResource("1_1461f")
@@ -10,7 +9,3 @@ script = ExtResource("1_1461f")
 [node name="RadarPanel" parent="." node_paths=PackedStringArray("controlsCapture") instance=ExtResource("1_qfqks")]
 transform = Transform3D(0.565685, 0, -0.565685, 0, 0.8, 0, 0.565685, 0, 0.565685, 0.7, 0.9, -0.4)
 controlsCapture = NodePath("../../Controls")
-
-[node name="RadarAntena" parent="." node_paths=PackedStringArray("hardwarePort") instance=ExtResource("2_hlmel")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-hardwarePort = NodePath("..")

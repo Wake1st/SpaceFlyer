@@ -37,8 +37,8 @@ vehicle = NodePath("../Vehicle")
 [node name="Vehicle" parent="." instance=ExtResource("1_a5bqa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 100)
 
-[node name="RadarAntena" parent="Vehicle/Hardware" index="1" node_paths=PackedStringArray("ship")]
-ship = NodePath("../../../Ship")
+[node name="Hardware" parent="Vehicle" index="6" node_paths=PackedStringArray("ship")]
+ship = NodePath("../../Ship")
 
 [node name="Ship" parent="." instance=ExtResource("4_vr5mi")]
 

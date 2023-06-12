@@ -94,15 +94,14 @@ func grab(controls:Controls):
 			debris.angular_velocity = angular_velocity
 			debris.linear_velocity = linear_velocity + tangential_velocity
 			
-			%Hardware/RadarAntena.add_item(debris)
+			%Hardware.add_radar_item(debris)
 		else:
 			if grabbableBody:
 				grabbing = true
 				grabbable = grabbableBody.get_child(1)
 				
 				if grabbableBody.hardware:
-					%Hardware/RadarAntena.disabled = false
-					
+					%Hardware.add_hardware(grabbableBody.hardware)
 				
 				if (grabbable.get_parent()):
 					grabbable.get_parent().remove_child(grabbable)
@@ -113,7 +112,7 @@ func grab(controls:Controls):
 				linear_velocity += grabLinVel/mass
 				angular_velocity += grabAngVel/mass
 				
-				%Hardware/RadarAntena.remove_item(grabbableBody)
+				%Hardware.remove_radar_item(grabbableBody)
 				grabbableBody.queue_free()
 
 

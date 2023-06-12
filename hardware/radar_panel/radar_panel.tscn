@@ -32,6 +32,17 @@ unique_name_in_owner = true
 handle_input_locally = false
 render_target_update_mode = 4
 
+[node name="Terminal" type="Node2D" parent="Screen"]
+visible = false
+top_level = true
+
+[node name="Output" type="TextEdit" parent="Screen/Terminal"]
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 506.0
+offset_bottom = 506.0
+text = "NO SIGNAL DETECTED"
+
 [node name="Active" type="Node2D" parent="Screen"]
 
 [node name="XZScan" type="Panel" parent="Screen/Active"]
