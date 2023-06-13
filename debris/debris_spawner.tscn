@@ -4,3 +4,6 @@
 
 [node name="DebrisSpawner" type="Node3D"]
 script = ExtResource("1_o5x7c")
+
+[node name="Layer0" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -20, 0)
