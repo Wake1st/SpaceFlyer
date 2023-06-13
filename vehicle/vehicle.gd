@@ -35,6 +35,7 @@ func _integrate_forces(_state):
 		grab(controls)
 	
 	look_around(controls.lookDirection)
+	toggle_headlight(controls.headlightMode)
 	
 	%Hardware/RadarPanel.draw_radar(controls)
 
@@ -126,8 +127,16 @@ func look_around(lookDirection:Controls.LOOK_DIRECTION):
 			%PlayerCamera.transform.basis = %LookDirections/Right.transform.basis
 
 
+func toggle_headlight(mode:Controls.HEADLIGHT_MODE):
+	if mode == Controls.HEADLIGHT_MODE.FAR:
+		$Headlight.spot_range = 400
+		$Headlight.spot_angle = 22
+	else:
+		$Headlight.spot_range = 100
+		$Headlight.spot_angle = 80
+
+
 func _on_area_3d_body_entered(body):
-#	print(body.name)
 	if grabbable == null:
 		grabbableBody = body
 

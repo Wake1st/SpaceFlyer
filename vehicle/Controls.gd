@@ -24,6 +24,12 @@ enum LOOK_DIRECTION {
 }
 var lookDirection:= LOOK_DIRECTION.FORWARD
 
+enum HEADLIGHT_MODE {
+	BROAD,
+	FAR
+}
+var headlightMode:= HEADLIGHT_MODE.FAR
+
 
 func _capture()->Controls:
 	direction = Vector3.ZERO
@@ -62,6 +68,13 @@ func _capture()->Controls:
 			lookDirection = LOOK_DIRECTION.FORWARD
 		elif lookDirection == LOOK_DIRECTION.FORWARD:
 			lookDirection = LOOK_DIRECTION.RIGHT
+	
+	if Input.is_action_just_pressed("toggle_headlight_mode"):
+		if headlightMode == HEADLIGHT_MODE.BROAD:
+			headlightMode = HEADLIGHT_MODE.FAR
+		else:
+			headlightMode = HEADLIGHT_MODE.BROAD
+	
 	
 	return self
 
