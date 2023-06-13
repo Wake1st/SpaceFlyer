@@ -46,7 +46,8 @@ ship = NodePath("../../Ship")
 
 [node name="DebrisSpawner" parent="." instance=ExtResource("6_48pw5")]
 
-[node name="radar_antena_container" parent="DebrisSpawner" instance=ExtResource("7_xejm3")]
+[node name="radar_antena_container" parent="DebrisSpawner/Layer0" index="0" instance=ExtResource("7_xejm3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
 hardware = ExtResource("8_31dx6")
 
 [node name="Pillar" parent="." instance=ExtResource("2_3vxuu")]
@@ -88,3 +89,4 @@ visible = false
 
 [editable path="Vehicle"]
 [editable path="Vehicle/Hardware"]
+[editable path="DebrisSpawner"]

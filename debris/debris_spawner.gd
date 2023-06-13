@@ -11,12 +11,14 @@ signal reset_level(i:Array[RigidBody3D])
 
 @export var itemCount:float = 1.0
 var items:Array[RigidBody3D]	# use editor once v4.1 is available
+var starterItems:Array[RigidBody3D]
 
 var firstPass:bool = true
 
 
 func _ready():
-	for child in get_children():
+	for child in $Layer0.get_children():
+		starterItems.append(child)
 		items.append(child)
 	
 	SetupLevel()
@@ -44,17 +46,32 @@ func SetupLevel():
 
 func StartLevel():
 	firstPass = false
-	for i in items.size():
-		items[i].apply_impulse(
-			items[i].transform.origin.normalized() * randf_range(
+	for i in starterItems.size():
+		starterItems[i].transform.origin = $Layer0.transform.origin + Vector3(
+			starterItems[i].transform.origin.normalized() * randf_range(
 				minImpulse,
 				maxImpulse
 			)
 		)
-		items[i].apply_torque(
+		starterItems[i].apply_torque(
 			Vector3(
-				randf_range(minTorque.x,maxTorque.x),
-				randf_range(-minTorque.y,maxTorque.y),
-				randf_range(-minTorque.z,maxTorque.z)
+				randf_range(minTorque.x/4,maxTorque.x/4),
+				randf_range(-minTorque.y/4,maxTorque.y/4),
+				randf_range(-minTorque.z/4,maxTorque.z/4)
 			)
 		)
+	
+#	for i in items.size():
+#		items[i].apply_impulse(
+#			items[i].transform.origin.normalized() * randf_range(
+#				minImpulse,
+#				maxImpulse
+#			)
+#		)
+#		items[i].apply_torque(
+#			Vector3(
+#				randf_range(minTorque.x,maxTorque.x),
+#				randf_range(-minTorque.y,maxTorque.y),
+#				randf_range(-minTorque.z,maxTorque.z)
+#			)
+#		)
