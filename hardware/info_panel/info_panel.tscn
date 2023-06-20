@@ -1,0 +1,82 @@
+[gd_scene load_steps=5 format=3 uid="uid://ogvr700grkik"]
+
+[ext_resource type="Script" path="res://hardware/info_panel/info_panel.gd" id="1_dniyj"]
+[ext_resource type="StyleBox" uid="uid://dr0e5uu6j0akk" path="res://hardware/radar_panel/radar_background.tres" id="1_ic0qi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8eucc"]
+transparency = 1
+albedo_color = Color(0.286275, 0.737255, 1, 0.784314)
+emission_enabled = true
+emission = Color(0.00784314, 0, 0.14902, 1)
+emission_energy_multiplier = 0.1
+
+[sub_resource type="QuadMesh" id="QuadMesh_yermx"]
+
+[node name="InfoPanel" type="Node3D"]
+script = ExtResource("1_dniyj")
+
+[node name="Device" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_8eucc")
+mesh = SubResource("QuadMesh_yermx")
+
+[node name="Screen" type="SubViewport" parent="."]
+unique_name_in_owner = true
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="Terminal" type="Node2D" parent="Screen"]
+visible = false
+top_level = true
+
+[node name="Output" type="TextEdit" parent="Screen/Terminal"]
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 506.0
+offset_bottom = 506.0
+text = "NO SIGNAL DETECTED"
+
+[node name="Status" type="Node2D" parent="Screen"]
+
+[node name="Panel" type="Panel" parent="Screen/Status"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 306.0
+offset_top = 6.0
+offset_right = 506.0
+offset_bottom = 506.0
+grow_horizontal = 0
+theme_override_styles/panel = ExtResource("1_ic0qi")
+
+[node name="HeadlightText" type="TextEdit" parent="Screen/Status/Panel"]
+layout_mode = 2
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 194.0
+offset_bottom = 46.0
+text = "HEADLIGHTS: FAR"
+
+[node name="CarryingText" type="TextEdit" parent="Screen/Status/Panel"]
+layout_mode = 2
+offset_left = 6.0
+offset_top = 52.0
+offset_right = 194.0
+offset_bottom = 92.0
+text = "CARRYING: FALSE"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Screen"]
+
+[node name="EditorNode" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="EditorNode"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 12.8
+anchor_bottom = 13.084
+offset_right = -472.0
+offset_bottom = -483.36
