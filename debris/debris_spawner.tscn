@@ -1,9 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://ewko4ftdsxw1"]
+[gd_scene load_steps=3 format=3 uid="uid://ewko4ftdsxw1"]
 
 [ext_resource type="Script" path="res://debris/debris_spawner.gd" id="1_o5x7c"]
+
+[sub_resource type="Curve3D" id="Curve3D_metk3"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 15.347, 5, -0.104, 0, 0, 0, 0, 0, 0, 8.593, 10, -14.254, 0, 0, 0, 0, 0, 0, -11.921, 15, -15.081, 0, 0, 0, 0, 0, 0, -18.538, 20, 3.447, 0, 0, 0, 0, 0, 0, -5.138, 25, 16.35, 0, 0, 0, 0, 0, 0, 16.202, 30, 11.553, 0, 0, 0, 0, 0, 0, 18.849, 35, -10.118, 0, 0, 0, 0, 0, 0, -1.829, 40, -24.511, 0, 0, 0, 0, 0, 0, -22.012, 45, -9.457, 0, 0, 0, 0, 0, 0, -15.395, 50, 16.35, 0, 0, 0, 0, 0, 0, 8.758, 55, 18.666, 0, 0, 0, 0, 0, 0, 21.827, 60, 5.763, 0, 0, 0, 0, 0, 0, -2.326, 65, -0.689),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 14
 
 [node name="DebrisSpawner" type="Node3D"]
 script = ExtResource("1_o5x7c")
 
 [node name="Layer0" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -20, 0)
+
+[node name="Layer1" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -40, 0)
+curve = SubResource("Curve3D_metk3")

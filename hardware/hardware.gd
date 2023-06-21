@@ -6,6 +6,8 @@ extends Node3D
 var radarPanel:Node3D
 var radarAntena:Node3D
 
+var debrisItems:Array[RigidBody3D]
+
 
 func _ready():
 	radarPanel = get_child(0)
@@ -22,6 +24,7 @@ func add_hardware(scene:PackedScene):
 		radarAntena.ship = ship
 		radarAntena.hardwarePort = self
 		radarAntena.disabled = false
+		radarAntena.reset_items(debrisItems)
 
 
 func received_item_coords(coords:Array[RadarCoord]):
@@ -29,6 +32,7 @@ func received_item_coords(coords:Array[RadarCoord]):
 
 
 func reset_radar_items(items:Array[RigidBody3D]):
+	debrisItems = items
 	if radarAntena:
 		radarAntena.reset_items(items)
 
