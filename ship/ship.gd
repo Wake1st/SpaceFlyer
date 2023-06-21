@@ -5,9 +5,13 @@ signal received_item(body:RigidBody3D)
 signal win_game
 
 
-var requiredCount = 1
+var requiredCount
 var collectedCount = 0
 var warpReady:bool = false
+
+
+func _on_debris_spawner_reset_level(items:Array[RigidBody3D]):
+	requiredCount = items.size()
 
 
 func _on_collection_area_body_entered(body):

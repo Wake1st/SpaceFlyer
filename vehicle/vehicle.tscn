@@ -86,11 +86,11 @@ unique_name_in_owner = true
 [node name="Headlight" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.79975, -0.85)
 light_color = Color(0.929412, 0.952941, 1, 1)
-light_energy = 14.0
+light_energy = 20.0
 light_indirect_energy = 8.0
 light_volumetric_fog_energy = 0.0
-spot_range = 200.0
-spot_angle = 22.0
+spot_range = 211.172
+spot_angle = 48.1414
 
 [node name="Lamp" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)

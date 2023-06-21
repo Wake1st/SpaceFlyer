@@ -19,6 +19,11 @@ var dock:Transform3D
 
 var deb
 
+var farLightRange = 1200
+var farLightAngle = 22
+var nearLightRange = 100
+var nearLightAngle = 50
+
 
 func _ready():
 	deb = preload("res://debris/debris.tscn")
@@ -97,11 +102,11 @@ func grab(controls:Controls):
 			
 			%Hardware.add_radar_item(debris)
 		else:
-			if grabbableBody:
+			if grabbableBody != null:
 				grabbing = true
 				grabbable = grabbableBody.get_child(1)
 				
-				if grabbableBody.hardware:
+				if grabbableBody.hardware != null:
 					%Hardware.add_hardware(grabbableBody.hardware)
 				
 				if (grabbable.get_parent()):
@@ -129,10 +134,10 @@ func look_around(lookDirection:Controls.LOOK_DIRECTION):
 
 func toggle_headlight(mode:Controls.HEADLIGHT_MODE):
 	if mode == Controls.HEADLIGHT_MODE.FAR:
-		$Headlight.spot_range = 400
+		$Headlight.spot_range = farLightRange
 		$Headlight.spot_angle = 22
 	else:
-		$Headlight.spot_range = 100
+		$Headlight.spot_range = nearLightRange
 		$Headlight.spot_angle = 80
 
 

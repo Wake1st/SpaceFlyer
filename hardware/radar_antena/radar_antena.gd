@@ -34,7 +34,7 @@ func _physics_process(_delta):
 	
 	for item in items:
 		if (item == null):
-			continue
+			continue 
 		
 		var coord = get_coords(item)
 		coords.push_back(coord)
